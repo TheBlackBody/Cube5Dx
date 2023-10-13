@@ -6,7 +6,7 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/10/10 20:39:43 by sfernand         ###   ########.fr        #
+#    Updated: 2023/10/12 14:06:34 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ RM = rm -f
 
 FILES = cube \
 		parce_path \
-		init_data
+		init_data \
+		init_file
 
 GNL_FILE = get_next_line \
 			get_next_line_utils
