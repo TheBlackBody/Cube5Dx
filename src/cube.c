@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 {
     t_data  data;
 
-    ft_printf("\n\n ceci est un int: %i\n ceci est une chaine de char: %s  \n\n", 1, argv[1]);
     if (argc == 2)
     {
         ft_printf("argv = %s\n", argv[1]);
