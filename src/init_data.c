@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/12 15:41:55 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:12:25 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char    **init_data(char *path, t_data *data)
             if (!map)
             {
                 ft_printf("test\n");
-                map = (char **)malloc(sizeof (char *) * (ft_strllen(line) * 100));
+                map = (char **)malloc(sizeof (char *) * ft_strllen(line) + 1);
             }
             ft_printf("enter %i\n", ft_strllen(line));
             map[i] = ft_strdup(line);

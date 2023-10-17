@@ -6,21 +6,22 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/10/12 14:06:34 by sfernand         ###   ########.fr        #
+#    Updated: 2023/10/16 20:13:11 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cube
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 AR = ar rcs
 RM = rm -f
 
 FILES = cube \
 		parce_path \
 		init_data \
-		init_file
+		init_file \
+		verif_file
 
 GNL_FILE = get_next_line \
 			get_next_line_utils

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/12 14:06:15 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:11:28 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void    init_NO(char *line, t_data *data);
 void    init_SO(char *line, t_data *data);
 void    init_WE(char *line, t_data *data);
 void    init_EA(char *line, t_data *data);
+void    verif_map(t_data data);
+int     lenx(char **map, int y);
 
 #endif
