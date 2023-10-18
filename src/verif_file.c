@@ -54,7 +54,7 @@ char    **dup_map(char **map)
 
 void  flood_fill(char **map, int x, int y)
 {
-    if (y - 1 < 0 || y + 1 > leny(map) || x > lenx(map, y) || map[y][x] == ' ')
+    if (y - 1 < -1 || y + 1 > leny(map) || x > lenx(map, y) || map[y][x] == ' ')
     {
         ft_printf("Error : The map should be closed\n");
         ft_close();
@@ -68,18 +68,18 @@ void  flood_fill(char **map, int x, int y)
             ft_close();
         }
         map[y][x] = 'R';
-        if (y != 0)
+        if (y != -1)
             flood_fill(map, x, y - 1);
         if (y != leny(map))
             flood_fill(map, x, y + 1);
-        if (x != 0)
+        if (x != -1)
             flood_fill(map, x - 1, y);
         if (x != lenx(map, y))
             flood_fill(map, x + 1, y);
     }
 }
 
-void    verif_map(t_data data)
+void    verif_map(t_data *data)
 {
     int     x;
     int     y;
@@ -88,8 +88,8 @@ void    verif_map(t_data data)
 
     x = 0;
     y = 0;
-    i = ft_strlen(data.map[y]);
-    map = dup_map(data.map);
+    i = ft_strlen(data->map[y]);
+    map = dup_map(data->map);
     while (x != i && map[y][x] != 'N')
 	{
 		x++;
@@ -100,5 +100,7 @@ void    verif_map(t_data data)
 			y++;
 		}
 	}
+    data->pose.x = x;
+    data->pose.y = y;
     flood_fill(map, x, y);
 }

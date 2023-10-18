@@ -19,6 +19,11 @@
 # include "./ft_printf/printf.h"
 # include "./get_next_line/get_next_line.h"
 
+typedef struct s_pose
+{
+    int x;
+    int y;
+}              t_pose;
 
 typedef struct s_map_data
 {
@@ -29,6 +34,7 @@ typedef struct s_map_data
     char    *F;
     char    *C;
     char    **map;
+    t_pose  pose;
 }              t_data;
 
 void    ft_close(void);
@@ -38,7 +44,7 @@ void    init_NO(char *line, t_data *data);
 void    init_SO(char *line, t_data *data);
 void    init_WE(char *line, t_data *data);
 void    init_EA(char *line, t_data *data);
-void    verif_map(t_data data);
+void    verif_map(t_data *data);
 int     lenx(char **map, int y);
 
 #endif

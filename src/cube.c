@@ -29,8 +29,7 @@ int main(int argc, char **argv)
         data.map = init_data(argv[1], &data);
         while (data.map[i++] != NULL)
             ft_printf("%s\n", data.map[i]);
-        verif_map(data);
-        ft_printf("%s\n", data.map[11]);
+        verif_map(&data);
     }
     else if (argc > 2) 
         ft_printf("Error : to many argument\n");
