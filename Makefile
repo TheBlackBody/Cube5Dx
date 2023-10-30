@@ -6,7 +6,7 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/10/30 12:46:12 by gpolve-g         ###   ########.fr        #
+#    Updated: 2023/10/30 14:59:44 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ PRINTF_FILE = libftprintf.a
 LIBFT_PATH = ./libft/
 LIBFT_FILE = libft.a
 
+MLX_PATH = ./mlx/
+MLX_FILE = libmlx.a
+
 FTPRINTF_PRINTF = $(addprefix $(PRINTF_PATH), $(PRINTF_FILE))
 
 LIBFT_LIB = $(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
@@ -58,7 +61,8 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 $(NAME): $(OBJS) $(OBJS_GNL)
 	make -sC $(LIBFT_PATH)
 	make -sC $(PRINTF_PATH)
-	gcc $(CFLAGS) $(OBJS) $(OBJS_GNL) $(LIBFT_LIB) $(FTPRINTF_PRINTF) -o $(NAME)
+	make -sC $(MLX_PATH)
+	gcc $(CFLAGS) $(OBJS) $(OBJS_GNL) $(LIBFT_LIB) $(FTPRINTF_PRINTF) $(MLX_MLX) -lmlx -framework OpenGL -framework Appkit -o $(NAME)
 
 all: $(NAME)
 
@@ -76,6 +80,7 @@ clean:
 	$(RM) $(OBJS_GNL)
 	@make clean -sC $(LIBFT_PATH)
 	@make clean -sC $(PRINTF_PATH)
+	@make clean -sC $(MLX_PATH)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -83,5 +88,6 @@ fclean: clean
 	$(RM) $(OBJS_GNL)
 	make fclean -sC $(LIBFT_PATH)
 	make fclean -sC $(PRINTF_PATH)
+	make clean -sC $(MLX_PATH)
 
 re: clean all
