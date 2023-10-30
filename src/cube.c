@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/24 16:47:55 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:35:29 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	def_everything(t_mlx *mlx, t_data *data)
 int main(int argc, char **argv)
 {
 	t_data	data;
-	t_lmx	mlx;
+	t_mlx	mlx;
 	int		i;
 
 	i = -1;
