@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/02 12:01:34 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:16:42 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,17 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x)
 		color = color / 2;
 	while (++y < mlx->size.s_y)
 	{
-		ft_printf("y = %i\n", y);
+	//	ft_printf("y = %i\n", y);
 		if (y <= var->draw_start && y >= var->draw_end)
+		{
+		ft_printf("oui\n");
 			ft_pixel_put(mlx, x, y, color);
+		}
 		else
+		{
+		ft_printf("non\n");
 			ft_pixel_put(mlx, x, y, mcolor(0, 0, 0, 0));
+		}
 	}
 }
 static	void	ft_line_height(t_mlx *mlx, t_pose *var, int x)
@@ -135,8 +141,8 @@ static	void	ft_calculations(t_mlx *mlx, t_data *data)
 		ft_calcul_step(&var);
 		ft_dda(&var, data);
 		ft_line_height(mlx, &var, x);
-
 	}
+	put_image(mlx);
 //	return ;
 }
 
