@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/02 11:46:00 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:01:34 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ static	void	ft_dda(t_pose *var, t_data *data)
 			var->map_y += var->step_y;
 			var->w_side = 1;
 		}
-		ft_printf("%c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
+	//	ft_printf("%c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
 		if (data->map[var->map_y][var->map_x] == '1')
 			var->is_hit = 1;
+		ft_printf("coucou\n");
 	}
 	if (var->w_side == 0)
 		var->len_ray = var->side_dist_x - var->delt_dist_x;
@@ -90,8 +91,9 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x)
 	y = -1;
 	if (var->w_side == 1)
 		color = color / 2;
-	while (++y <= mlx->size.s_y)
+	while (++y < mlx->size.s_y)
 	{
+		ft_printf("y = %i\n", y);
 		if (y <= var->draw_start && y >= var->draw_end)
 			ft_pixel_put(mlx, x, y, color);
 		else
@@ -140,6 +142,7 @@ static	void	ft_calculations(t_mlx *mlx, t_data *data)
 
 void	ft_game(t_mlx *mlx, t_data *data)
 {
-	ft_printf("%p\n", mlx->mlx);
+//	ft_printf("%p\n", mlx->mlx);
 	ft_calculations(mlx, data);
+	mlx_loop(mlx);
 }

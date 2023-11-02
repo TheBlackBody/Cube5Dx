@@ -6,7 +6,7 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/10/30 14:59:44 by sfernand         ###   ########.fr        #
+#    Updated: 2023/11/02 11:48:20 by gpolve-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ $(NAME): $(OBJS) $(OBJS_GNL)
 	make -sC $(LIBFT_PATH)
 	make -sC $(PRINTF_PATH)
 	make -sC $(MLX_PATH)
-	gcc $(CFLAGS) $(OBJS) $(OBJS_GNL) $(LIBFT_LIB) $(FTPRINTF_PRINTF) $(MLX_MLX) -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+	gcc $(CFLAGS) $(OBJS) $(OBJS_GNL) $(LIBFT_LIB) $(FTPRINTF_PRINTF) $(MLX_MLX) -Lmlx -lmlx -framework OpenGL -framework Appkit -o $(NAME)
 
 all: $(NAME)
 
