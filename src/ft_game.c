@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/10/31 12:10:20 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:46:00 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static	void	ft_dda(t_pose *var, t_data *data)
 	else
 		var->len_ray = var->side_dist_y - var->delt_dist_y;
 }
+
 
 static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x)
 {
