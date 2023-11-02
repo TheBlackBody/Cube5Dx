@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:47:46 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/16 23:48:15 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:49:33 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,16 @@ char    **dup_map(char **map)
     char    **temp;
 
     y = 0;
-    temp = (char **)malloc(sizeof (char *) * lenx(map, y));
+    temp = (char **)malloc(sizeof (char *) * (lenx(map, y) * 100));
     while(map[y] != NULL)
     {
         temp[y] = ft_strdup(map[y]);
+        ft_printf("c %i ", y);
         y++;
     }
+    ft_printf("d");
     temp[y] = NULL;
+    ft_printf("d");
     return(temp);
 }
 
