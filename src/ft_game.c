@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/10/30 14:26:42 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:10:20 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static	void	ft_dda(t_pose *var, t_data *data)
 			var->map_y += var->step_y;
 			var->w_side = 1;
 		}
-		if (data->map[var->map_x][var->map_y] > 0)
+		ft_printf("%c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
+		if (data->map[var->map_y][var->map_x] == '1')
 			var->is_hit = 1;
 	}
 	if (var->w_side == 0)
@@ -138,5 +139,6 @@ static	void	ft_calculations(t_mlx *mlx, t_data *data)
 
 void	ft_game(t_mlx *mlx, t_data *data)
 {
+	ft_printf("%p\n", mlx->mlx);
 	ft_calculations(mlx, data);
 }

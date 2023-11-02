@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/30 13:35:29 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:17:17 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int main(int argc, char **argv)
 		while (data.map[i++] != NULL)
 			ft_printf("%s\n", data.map[i]);
 		verif_map(&data);
+		def_everything(&mlx, &data);
+		ft_game(&mlx, &data);
 	}
 	else if (argc > 2) 
 		ft_printf("Error : to many argument\n");
 	else if (argc < 2) 
 		ft_printf("Error : to less argument\n");
-	def_everything(&mlx, &data);
-	ft_game(&mlx, &data);
 	return(0);
 }
