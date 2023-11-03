@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/30 12:43:34 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:56:13 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./mlx/mlx.h"
 # include <fcntl.h>
 # include <limits.h>
+# include <stdlib.h> //a retirer
 # include "./libft/libft.h"
 # include "./ft_printf/printf.h"
 # include "./get_next_line/get_next_line.h"
@@ -69,8 +70,10 @@ typedef struct s_mlx
 	int	line_lenght;
 	int	endian;
 	int	bits_per_pixel;
+	t_pose	*var;
 	t_wsize	size;
 }	t_mlx;
+
 typedef struct s_map_data
 {
     char    *NO;
@@ -80,6 +83,7 @@ typedef struct s_map_data
     char    *F;
     char    *C;
     char    **map;
+   // char	***mape; //ntm c'est pour test, ca me fait mal a moi aussi;
     t_pose	pose;
 //    t_mlx	mlx;
 }              t_data;
@@ -95,6 +99,8 @@ void    init_EA(char *line, t_data *data);
 void	ft_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	put_image(t_mlx *mlx);
 void    verif_map(t_data *data);
+int	ft_close_w(t_mlx *mlx);
+int	key_hook(int keycode, t_mlx *mlx);
 int	mcolor(int t, int r, int g, int b);
 int     lenx(char **map, int y);
 

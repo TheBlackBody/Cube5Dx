@@ -6,13 +6,40 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/02 12:16:42 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:59:20 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
 
+	int worldmap[24][24]=
+	{
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, //ici a deux du bord
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, //ou ici au milieux
+		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	};
 static double	ft_abs(double val)
 {
 	if (val < 0)
@@ -22,11 +49,11 @@ static double	ft_abs(double val)
 
 static	void	ft_calcul_delt(t_pose *var)
 {
-		var->delt_dist_x = 1e30;
-		if (var->ray_dir_x != 0)
+	var->delt_dist_x = 1e30;
+	if (var->ray_dir_x != 0)
 		var->delt_dist_x = ft_abs(1 / var->ray_dir_x); //faut ajuster
-		var->delt_dist_y = 1e30;
-		if (var->ray_dir_y != 0)
+	var->delt_dist_y = 1e30;
+	if (var->ray_dir_y != 0)
 		var->delt_dist_y = ft_abs(1 / var->ray_dir_y); //faut ajuster
 }
 
@@ -35,27 +62,28 @@ static	void	ft_calcul_step(t_pose *var)
 	if (var->ray_dir_x < 0)
 	{
 		var->step_x = -1;
-		var->side_dist_x = (var->ig_x - var->map_x) * var->delt_dist_x; //j'ai reverif et c'est bien ca, ce qui fait 0 mais bon;
+		var->side_dist_x = (var->x - var->map_x) * var->delt_dist_x; //j'ai reverif et c'est bien ca, ce qui fait 0 mais bon;
 	}
 	else
 	{
 		var->step_x = 1;
-		var->side_dist_x = (var->map_x + 1 - var->ig_x) * var->delt_dist_x; //toujours
+		var->side_dist_x = (var->map_x + 1 - var->x) * var->delt_dist_x; //toujours
 	}
 	if (var->ray_dir_y < 0)
 	{
 		var->step_y = -1;
-		var->side_dist_y = (var->ig_y - var->map_y) * var->delt_dist_y;
+		var->side_dist_y = (var->y - var->map_y) * var->delt_dist_y;
 	}
 	else
 	{
 		var->step_y = 1;
-		var->side_dist_y = (var->map_y + 1 - var->ig_y) * var->delt_dist_y; //toujours
+		var->side_dist_y = (var->map_y + 1 - var->y) * var->delt_dist_y; //toujours
 	}	
 }
 
 static	void	ft_dda(t_pose *var, t_data *data)
 {
+	(void)data;
 	while (var->is_hit == 0)
 	{
 		if (var->side_dist_x < var->side_dist_y)
@@ -70,10 +98,12 @@ static	void	ft_dda(t_pose *var, t_data *data)
 			var->map_y += var->step_y;
 			var->w_side = 1;
 		}
-	//	ft_printf("%c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
-		if (data->map[var->map_y][var->map_x] == '1')
+		//	ft_printf("%c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
+	//	if (data->map[var->map_y][var->map_x] == '1')
+	//		var->is_hit = 1;
+		if (worldmap[var->map_x][var->map_y] != 0)
 			var->is_hit = 1;
-		ft_printf("coucou\n");
+		//	ft_printf("coucou\n");
 	}
 	if (var->w_side == 0)
 		var->len_ray = var->side_dist_x - var->delt_dist_x;
@@ -81,32 +111,64 @@ static	void	ft_dda(t_pose *var, t_data *data)
 		var->len_ray = var->side_dist_y - var->delt_dist_y;
 }
 
-
-static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x)
+//t_data temp
+static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
 	int	y;
 	int	color;
 
-	color = mcolor(0, 255, 0, 0);
+(void)data;
+	if (worldmap[var->map_x][var->map_y] == 1)
+	{
+		color = mcolor(0, 255, 0, 0);
+		if (var->w_side == 1)
+			color = mcolor(0, 255 / 2, 0, 0);
+	}
+	else if (worldmap[var->map_x][var->map_y] == 2)
+	{
+		color = mcolor(0, 0, 255, 0);
+		if (var->w_side == 1)
+			color = mcolor(0, 0, 255 / 2, 0);
+	}
+	else if (worldmap[var->map_x][var->map_y] == 3)
+	{
+		color = mcolor(0, 0, 0, 255);
+		if (var->w_side == 1)
+			color = mcolor(0, 0, 0, 255 / 2);
+	}
+	else if (worldmap[var->map_x][var->map_y] == 4)
+	{
+		color = mcolor(0, 255, 255, 255);
+		if (var->w_side == 1)
+			color = mcolor(0, 255 / 2, 255 / 2, 255 / 2);
+	}
+	else if (worldmap[var->map_x][var->map_y] == 0)
+	{
+		color = mcolor(0, 255, 255, 0);
+		if (var->w_side == 1)
+			color = mcolor(0, 255 / 2, 255 / 2, 0);
+	}
 	y = -1;
-	if (var->w_side == 1)
-		color = color / 2;
+	//	color = color / 2;
 	while (++y < mlx->size.s_y)
 	{
-	//	ft_printf("y = %i\n", y);
-		if (y <= var->draw_start && y >= var->draw_end)
+		//	ft_printf("y = %i\n", y);
+		if (y >= var->draw_start && y <= var->draw_end)
 		{
-		ft_printf("oui\n");
+		//	ft_printf("y = %i, oui\n", y);
 			ft_pixel_put(mlx, x, y, color);
 		}
 		else
 		{
-		ft_printf("non\n");
+		//	ft_printf("y = %i, non\n", y);
+			//	ft_printf("non\n");
 			ft_pixel_put(mlx, x, y, mcolor(0, 0, 0, 0));
 		}
 	}
 }
-static	void	ft_line_height(t_mlx *mlx, t_pose *var, int x)
+
+//t_data temp
+static	void	ft_line_height(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
 	int	line_height;
 
@@ -114,10 +176,10 @@ static	void	ft_line_height(t_mlx *mlx, t_pose *var, int x)
 	var->draw_start = -line_height / 2 + mlx->size.s_y / 2;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
-	var->draw_start = line_height / 2 + mlx->size.s_y / 2;
-	if (var->draw_start >= mlx->size.s_y)
-		var->draw_start = mlx->size.s_y - 1;
-	ft_put_line(mlx, var, x);
+	var->draw_end = line_height / 2 + mlx->size.s_y / 2;//ca devrait etre end mais fonc pa
+	if (var->draw_end >= mlx->size.s_y)
+		var->draw_end = mlx->size.s_y - 1;
+	ft_put_line(mlx, var, x, data);
 }
 
 static	void	ft_calculations(t_mlx *mlx, t_data *data)
@@ -126,6 +188,10 @@ static	void	ft_calculations(t_mlx *mlx, t_data *data)
 	t_pose	var; //avant c'etait un pointeur;
 
 	var = data->pose;
+	var.x = 22;
+	var.y = 12;
+	while (1)
+	{
 	x = -1;
 	while (++x < mlx->size.s_x)
 	{
@@ -134,21 +200,46 @@ static	void	ft_calculations(t_mlx *mlx, t_data *data)
 		var.ray_dir_y = var.dir_y + var.plane_y * var.camera_x;
 		var.map_x = (int)var.x;
 		var.map_y = (int)var.y;
-	//	var->ig_x = (double)var->x;
-	//	var->ig_y = (double)var->y;
+		//	var->ig_x = (double)var->x;
+		//	var->ig_y = (double)var->y;
 		ft_calcul_delt(&var);
 		var.is_hit = 0;
 		ft_calcul_step(&var);
 		ft_dda(&var, data);
-		ft_line_height(mlx, &var, x);
+		ft_line_height(mlx, &var, x, data);
 	}
 	put_image(mlx);
-//	return ;
+	mlx_key_hook(mlx->mlx_w, key_hook, mlx);
+//	mlx_mouse_hook(mlx->mlx_w, mouse_hook, mlx);
+	mlx_hook(mlx->mlx_w, 17, (1L << 19), ft_close_w, mlx);
+	mlx_loop(mlx);
+	}
+	//	return ;
+}
+
+int	ft_close_w(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx, mlx->mlx_w);
+	exit(0);
+	return (0);
+}
+
+int	key_hook(int keycode, t_mlx *mlx)
+{
+	if (keycode == 53)
+		ft_close_w(mlx);
+	return (0);
 }
 
 void	ft_game(t_mlx *mlx, t_data *data)
 {
-//	ft_printf("%p\n", mlx->mlx);
+//	free(data->map);
+//	data->mape = worldmap;
+	//	ft_printf("%p\n", mlx->mlx);
+	mlx->var = &data->pose;
 	ft_calculations(mlx, data);
-	mlx_loop(mlx);
+//	mlx_key_hook(mlx->mlx_w, key_hook, mlx);
+//	mlx_mouse_hook(mlx->mlx_w, mouse_hook, mlx);
+//	mlx_hook(mlx->mlx_w, 17, (1L << 19), ft_close_w, mlx);
+//	mlx_loop(mlx);
 }
