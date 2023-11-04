@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/10/31 11:17:17 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:56:53 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	def_everything(t_mlx *mlx, t_data *data)
 	data->pose.plane_y = 0.66;
 	data->pose.cur_time = 0;
 	data->pose.prev_time = 0;
+	data->pose.move_speed = 0.15;
+	data->pose.rot_speed = 0.07;
 }
 
 int main(int argc, char **argv)

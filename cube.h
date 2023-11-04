@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/03 12:56:13 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:54:47 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./mlx/mlx.h"
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 # include <stdlib.h> //a retirer
 # include "./libft/libft.h"
 # include "./ft_printf/printf.h"
@@ -53,6 +54,8 @@ typedef struct s_pose
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
+	double	move_speed;
+	double	rot_speed;
 }	t_pose;
 
 typedef struct s_wsize
@@ -60,19 +63,6 @@ typedef struct s_wsize
 	int	s_x;
 	int	s_y;
 }	t_wsize;
-
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*mlx_w;
-	void	*img;
-	void	*addr;
-	int	line_lenght;
-	int	endian;
-	int	bits_per_pixel;
-	t_pose	*var;
-	t_wsize	size;
-}	t_mlx;
 
 typedef struct s_map_data
 {
@@ -88,6 +78,20 @@ typedef struct s_map_data
 //    t_mlx	mlx;
 }              t_data;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*mlx_w;
+	void	*img;
+	void	*addr;
+	int	line_lenght;
+	int	endian;
+	int	bits_per_pixel;
+	t_pose	*var;
+	t_data *data;
+	t_wsize	size;
+}	t_mlx;
+
 void    ft_close(void);
 void	ft_game(t_mlx *mlx, t_data *data);
 void    parse_path(char *path);
@@ -97,10 +101,15 @@ void    init_SO(char *line, t_data *data);
 void    init_WE(char *line, t_data *data);
 void    init_EA(char *line, t_data *data);
 void	ft_pixel_put(t_mlx *mlx, int x, int y, int color);
+void	move_front(int keycode, t_mlx *mlx);
+void	rotat_left(t_mlx *mlx);
+void	rotat_right(t_mlx *mlx);
 void	put_image(t_mlx *mlx);
 void    verif_map(t_data *data);
 int	ft_close_w(t_mlx *mlx);
+int	ft_calc(t_mlx *mlx);
 int	key_hook(int keycode, t_mlx *mlx);
+int	mouse_hook(int x, int y, t_mlx *mlx);
 int	mcolor(int t, int r, int g, int b);
 int     lenx(char **map, int y);
 
