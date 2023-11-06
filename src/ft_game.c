@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/04 18:19:08 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:45:32 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ void	move_front(int keycode, t_mlx *mlx)
 	{
 	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed * 1.2))][(int)var->y])
 		var->x -= var->dir_x * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed + 0.2))])
+	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed + 0.2))])
 		var->y -= var->dir_y * var->move_speed;
 	}
 	ft_calc(mlx);
