@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/04 17:56:53 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:47:04 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 void    ft_close(void)
 {
 	exit(0);
+}
+
+void	ft_ignit_sprite(t_data *data, t_mlx *mlx)
+{
+	data->north.referenc = mlx_xpm_file_to_image(mlx->mlx, data->NO ,&data->north.size.x, &data->north.size.y);
+	//ft_printf("data NO = %s\n", data->NO);
+//	data->north.pixels = mlx_get_data_addr(data->north.referenc, &data->north.bits_per_pixel, &data->north.line_size, &data->north.endian);
+	data->south.referenc = mlx_xpm_file_to_image(mlx->mlx, data->SO ,&data->south.size.x, &data->south.size.y);
+//	data->south.pixels = mlx_get_data_addr(data->south.referenc, &data->south.bits_per_pixel, &data->south.line_size, &data->south.endian);
+	data->west.referenc = mlx_xpm_file_to_image(mlx->mlx, data->WE ,&data->west.size.x, &data->west.size.y);
+//	data->west.pixels = mlx_get_data_addr(data->west.referenc, &data->west.bits_per_pixel, &data->west.line_size, &data->west.endian);
+	data->east.referenc = mlx_xpm_file_to_image(mlx->mlx, data->EA ,&data->east.size.x, &data->east.size.y);
+//	data->east.pixels = mlx_get_data_addr(data->east.referenc, &data->east.bits_per_pixel, &data->east.line_size, &data->east.endian);
+(void)mlx;
+(void)data;
 }
 
 static void	def_everything(t_mlx *mlx, t_data *data)
@@ -37,6 +52,33 @@ static void	def_everything(t_mlx *mlx, t_data *data)
 	data->pose.prev_time = 0;
 	data->pose.move_speed = 0.15;
 	data->pose.rot_speed = 0.07;
+	ft_ignit_sprite(data, mlx);
+//	char **temp;
+//	int	i;
+
+//	i = -1;
+//	if (!data->F)
+	//	mlx->field = mcolor(0, 139, 69, 19);
+//	else
+//	{
+//		temp = ft_split(data->F, ',');
+//		mlx->field = mcolor(0, ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
+	
+	//	while(++temp)
+	//		free(*temp);
+	//	free(temp);
+//	}
+//	if (!data->C)
+	//	mlx->field = mcolor(0, 0, 0, 190);
+//	else
+//	{
+//		temp = ft_split(data->C, ',');
+//		mlx->sky = mcolor(0, ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
+//	
+//		while(++temp)
+//			free(*temp);
+//		free(temp);
+//	}
 }
 
 int main(int argc, char **argv)
