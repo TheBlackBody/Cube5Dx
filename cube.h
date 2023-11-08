@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/04 17:54:47 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:50:08 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,40 @@ typedef struct s_wsize
 	int	s_y;
 }	t_wsize;
 
+typedef struct	s_vector
+{
+    int	x;
+    int	y;
+}                t_vector;
+
+typedef struct	s_image
+{
+	void	*referenc;
+	t_vector	size;
+	char	*pixels;
+	int		bits_per_pixel;
+	int		line_size;
+	int		endian;
+//	void	*mlx;
+//	void	*img
+}	t_image;
+
 typedef struct s_map_data
 {
-    char    *NO;
-    char    *SO;
-    char    *WE;
-    char    *EA;
-    char    *F;
-    char    *C;
-    char    **map;
-   // char	***mape; //ntm c'est pour test, ca me fait mal a moi aussi;
-    t_pose	pose;
-//    t_mlx	mlx;
+	char    *NO;
+	char    *SO;
+	char    *WE;
+	char    *EA;
+	char    *F;
+	char    *C;
+	char    **map;
+//	char	***mape; //ntm c'est pour test, ca me fait mal a moi aussi;
+	t_pose	pose;
+	t_image	north;
+	t_image	south;
+	t_image	east;
+	t_image	west;
+//	t_mlx	mlx;
 }              t_data;
 
 typedef struct s_mlx
@@ -87,6 +109,8 @@ typedef struct s_mlx
 	int	line_lenght;
 	int	endian;
 	int	bits_per_pixel;
+//	int	field;
+//	int	sky;
 	t_pose	*var;
 	t_data *data;
 	t_wsize	size;
@@ -100,6 +124,7 @@ void    init_NO(char *line, t_data *data);
 void    init_SO(char *line, t_data *data);
 void    init_WE(char *line, t_data *data);
 void    init_EA(char *line, t_data *data);
+void	ft_ignit_sprite(t_data *data, t_mlx *mlx);
 void	ft_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	move_front(int keycode, t_mlx *mlx);
 void	rotat_left(t_mlx *mlx);

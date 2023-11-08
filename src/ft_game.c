@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/06 10:45:32 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:57:17 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,13 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 		//	ft_printf("y = %i, oui\n", y);
 			ft_pixel_put(mlx, x, y, color);
 		}
+		else if (y < var->draw_end)
+			ft_pixel_put(mlx, x, y, mcolor(0, 0, 0, 155));
 		else
 		{
 		//	ft_printf("y = %i, non\n", y);
 			//	ft_printf("non\n");
-			ft_pixel_put(mlx, x, y, mcolor(0, 0, 0, 0));
+			ft_pixel_put(mlx, x, y, mcolor(0, 149, 69, 19));
 		}
 	}
 }
@@ -230,16 +232,16 @@ void	move_left(int keycode, t_mlx *mlx)
 	var = mlx->var;
 	if (keycode == 0)
 	{
-	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed + 0.2))][(int)var->y])
+	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed * 1.2))][(int)var->y])
 		var->x -= var->dir_y * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed + 0.2))])
+	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed * 1.2))])
 		var->y += var->dir_x * var->move_speed;
 	}
 	if (keycode == 2)
 	{
-	if (!worldmap[(int)(var->x + var->dir_x * (var->move_speed + 0.2))][(int)var->y])
+	if (!worldmap[(int)(var->x + var->dir_x * (var->move_speed * 1.2))][(int)var->y])
 		var->x += var->dir_y * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed + 0.2))])
+	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed * 1.2))])
 		var->y -= var->dir_x * var->move_speed;
 	}
 	ft_calc(mlx);
@@ -252,16 +254,16 @@ void	move_front(int keycode, t_mlx *mlx)
 	var = mlx->var;
 	if (keycode == 13)
 	{
-	if (!worldmap[(int)(var->x + var->dir_x * (var->move_speed + 0.2))][(int)var->y])
+	if (!worldmap[(int)(var->x + var->dir_x * (var->move_speed))][(int)var->y])
 		var->x += var->dir_x * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed + 0.2))])
+	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed))])
 		var->y += var->dir_y * var->move_speed;
 	}
 	if (keycode == 1)
 	{
-	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed * 1.2))][(int)var->y])
+	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed))][(int)var->y])
 		var->x -= var->dir_x * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed + 0.2))])
+	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed))])
 		var->y -= var->dir_y * var->move_speed;
 	}
 	ft_calc(mlx);
