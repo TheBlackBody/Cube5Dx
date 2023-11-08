@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/08 21:47:04 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/08 22:26:11 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_ignit_sprite(t_data *data, t_mlx *mlx)
 //	data->west.pixels = mlx_get_data_addr(data->west.referenc, &data->west.bits_per_pixel, &data->west.line_size, &data->west.endian);
 	data->east.referenc = mlx_xpm_file_to_image(mlx->mlx, data->EA ,&data->east.size.x, &data->east.size.y);
 //	data->east.pixels = mlx_get_data_addr(data->east.referenc, &data->east.bits_per_pixel, &data->east.line_size, &data->east.endian);
-(void)mlx;
-(void)data;
+//(void)mlx;
+//(void)data;
 }
 
 static void	def_everything(t_mlx *mlx, t_data *data)

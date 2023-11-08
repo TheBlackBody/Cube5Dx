@@ -6,40 +6,12 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/08 19:57:17 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/08 22:33:03 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-
-	int worldmap[24][24]=
-	{
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, //ici a deux du bord
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, //ou ici au milieux
-		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-	};
 static double	ft_abs(double val)
 {
 	if (val < 0)
@@ -83,7 +55,7 @@ static	void	ft_calcul_step(t_pose *var)
 
 static	void	ft_dda(t_pose *var, t_data *data)
 {
-	(void)data;
+//	(void)data;
 	while (var->is_hit == 0)
 	{
 		if (var->side_dist_x < var->side_dist_y)
@@ -98,10 +70,11 @@ static	void	ft_dda(t_pose *var, t_data *data)
 			var->map_y += var->step_y;
 			var->w_side = 1;
 		}
-		//	ft_printf("%c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
+		ft_printf("non\n");
+			ft_printf("oui %c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
 	//	if (data->map[var->map_y][var->map_x] == '1')
 	//		var->is_hit = 1;
-		if (worldmap[var->map_x][var->map_y] != 0)
+		if (data->map[var->map_y][var->map_x] != '0')
 			var->is_hit = 1;
 		//	ft_printf("coucou\n");
 	}
@@ -117,36 +90,11 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 	int	y;
 	int	color;
 
-(void)data;
-	if (worldmap[var->map_x][var->map_y] == 1)
+	if (data->map[var->map_y][var->map_x] == '1')
 	{
 		color = mcolor(0, 255, 0, 0);
 		if (var->w_side == 1)
 			color = mcolor(0, 255 / 2, 0, 0);
-	}
-	else if (worldmap[var->map_x][var->map_y] == 2)
-	{
-		color = mcolor(0, 0, 255, 0);
-		if (var->w_side == 1)
-			color = mcolor(0, 0, 255 / 2, 0);
-	}
-	else if (worldmap[var->map_x][var->map_y] == 3)
-	{
-		color = mcolor(0, 0, 0, 255);
-		if (var->w_side == 1)
-			color = mcolor(0, 0, 0, 255 / 2);
-	}
-	else if (worldmap[var->map_x][var->map_y] == 4)
-	{
-		color = mcolor(0, 255, 255, 255);
-		if (var->w_side == 1)
-			color = mcolor(0, 255 / 2, 255 / 2, 255 / 2);
-	}
-	else if (worldmap[var->map_x][var->map_y] == 0)
-	{
-		color = mcolor(0, 255, 255, 0);
-		if (var->w_side == 1)
-			color = mcolor(0, 255 / 2, 255 / 2, 0);
 	}
 	y = -1;
 	//	color = color / 2;
@@ -228,20 +176,22 @@ int	ft_close_w(t_mlx *mlx)
 void	move_left(int keycode, t_mlx *mlx)
 {
 	t_pose *var;
+	t_data *data;
 
+	data = mlx->data;
 	var = mlx->var;
 	if (keycode == 0)
 	{
-	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed * 1.2))][(int)var->y])
+	if (data->map[(int)var->y][(int)(var->x - var->dir_x * (var->move_speed * 1.2))] == '0')
 		var->x -= var->dir_y * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed * 1.2))])
+	if (data->map[(int)(var->y + var->dir_y * (var->move_speed * 1.2))][(int)var->x] == '0')
 		var->y += var->dir_x * var->move_speed;
 	}
 	if (keycode == 2)
 	{
-	if (!worldmap[(int)(var->x + var->dir_x * (var->move_speed * 1.2))][(int)var->y])
+	if (data->map[(int)var->y][(int)(var->x + var->dir_x * (var->move_speed * 1.2))] == '0')
 		var->x += var->dir_y * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed * 1.2))])
+	if (data->map[(int)(var->y - var->dir_y * (var->move_speed * 1.2))][(int)var->x] == '0')
 		var->y -= var->dir_x * var->move_speed;
 	}
 	ft_calc(mlx);
@@ -250,20 +200,22 @@ void	move_left(int keycode, t_mlx *mlx)
 void	move_front(int keycode, t_mlx *mlx)
 {
 	t_pose *var;
+	t_data *data;
 
+	data = mlx->data;
 	var = mlx->var;
 	if (keycode == 13)
 	{
-	if (!worldmap[(int)(var->x + var->dir_x * (var->move_speed))][(int)var->y])
+	if (data->map[(int)var->y][(int)(var->x + var->dir_x * (var->move_speed))] == '0')
 		var->x += var->dir_x * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y + var->dir_y * (var->move_speed))])
+	if (data->map[(int)(var->y + var->dir_y * (var->move_speed))][(int)var->x] == '0')
 		var->y += var->dir_y * var->move_speed;
 	}
 	if (keycode == 1)
 	{
-	if (!worldmap[(int)(var->x - var->dir_x * (var->move_speed))][(int)var->y])
+	if (data->map[(int)var->y][(int)(var->x - var->dir_x * (var->move_speed))] == '0')
 		var->x -= var->dir_x * var->move_speed;
-	if (!worldmap[(int)var->x][(int)(var->y - var->dir_y * (var->move_speed))])
+	if (data->map[(int)(var->y - var->dir_y * (var->move_speed))][(int)var->x] == '0')
 		var->y -= var->dir_y * var->move_speed;
 	}
 	ft_calc(mlx);
@@ -303,6 +255,8 @@ void	rotat_left(t_mlx *mlx)
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
+	ft_printf("pre_test data\n");
+	ft_printf("test data : data NO = %s\n", mlx->data->NO);
 //	ft_printf("keycode = %i\n", keycode);
 	if (keycode == 53)
 		ft_close_w(mlx);
@@ -348,7 +302,7 @@ void	ft_game(t_mlx *mlx, t_data *data)
 	mlx->data = data;
 	mlx->var->x = 22;
 	mlx->var->y = 12;
-	ft_calculations(mlx, data);
+	ft_calculations(mlx, mlx->data);
 //	mlx_key_hook(mlx->mlx_w, key_hook, mlx);
 //	mlx_mouse_hook(mlx->mlx_w, mouse_hook, mlx);
 	mlx_hook(mlx->mlx_w, 17, (1L << 19), ft_close_w, mlx);
@@ -357,3 +311,56 @@ void	ft_game(t_mlx *mlx, t_data *data)
 //	mlx_loop_hook(mlx, ft_calc, mlx);
 	mlx_loop(mlx);
 }
+//au cas ou;
+//	else if (data->map[var->map_y][var->map_x] == 2)
+//	{
+//		color = mcolor(0, 0, 255, 0);
+//		if (var->w_side == 1)
+//			color = mcolor(0, 0, 255 / 2, 0);
+//	}
+//	else if (data->map[var->map_y][var->map_x] == 3)
+//	{
+//		color = mcolor(0, 0, 0, 255);
+//		if (var->w_side == 1)
+//			color = mcolor(0, 0, 0, 255 / 2);
+//	}
+//	else if (data->map[var->map_y][var->map_x] == 4)
+//	{
+//		color = mcolor(0, 255, 255, 255);
+//		if (var->w_side == 1)
+//			color = mcolor(0, 255 / 2, 255 / 2, 255 / 2);
+//	}
+//	else if (data->map[var->map_y][var->map_x] == 0)
+//	{
+//		color = mcolor(0, 255, 255, 0);
+//		if (var->w_side == 1)
+//			color = mcolor(0, 255 / 2, 255 / 2, 0);
+//	}
+//
+//	int worldmap[24][24]=
+//	{
+//		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+//		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+//		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, //ici a deux du bord
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+///		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, //ou ici au milieux
+//		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+//	};
