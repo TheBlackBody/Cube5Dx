@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/09 12:01:14 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:24:03 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,16 @@ int main(int argc, char **argv)
 	t_mlx	mlx;
 	int		i;
 
-	i = -1;
+	i = 0;
 	if (argc == 2)
 	{
 		parse_path(argv[1]);
-		data.map = init_data(argv[1], &data);
-		while (data.map[i++] != NULL)
+		init_data(argv[1], &data);
+		while (data.map[i] != NULL)
+		{
 			ft_printf("%s\n", data.map[i]);
+			i++;
+		}
 		verif_map(&data);
 		def_everything(&mlx, &data);
 		ft_game(&mlx, &data);
