@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/09 12:13:00 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:13:42 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static	void	ft_dda(t_pose *var, t_data *data)
 //			ft_printf("oui %c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
 	//	if (data->map[var->map_y][var->map_x] == '1')
 	//		var->is_hit = 1;
-		if (data->map[var->map_y][var->map_x] != '0')
+		if (data->map[var->map_y][var->map_x] == '1')
 			var->is_hit = 1;
 		//	ft_printf("coucou\n");
 	}
@@ -255,8 +255,8 @@ void	rotat_left(t_mlx *mlx)
 
 int	key_hook(int keycode, t_mlx *mlx)
 {
-	ft_printf("pre_test data\n");
-	ft_printf("test data : data NO = %s\n", mlx->data->NO);
+//	ft_printf("pre_test data\n");
+//	ft_printf("test data : data NO = %s\n", mlx->data->NO);
 //	ft_printf("keycode = %i\n", keycode);
 	if (keycode == 53)
 		ft_close_w(mlx);
@@ -300,8 +300,8 @@ void	ft_game(t_mlx *mlx, t_data *data)
 	//	ft_printf("%p\n", mlx->mlx);
 //	ft_printf("coucou sasha\n");
 	mlx->var = &data->pose;
-	mlx->var->x = 22;
-	mlx->var->y = 12;
+//	mlx->var->x = 22;
+//	mlx->var->y = 12;
 	ft_calculations(mlx, mlx->data);
 //	mlx_key_hook(mlx->mlx_w, key_hook, mlx);
 //	mlx_mouse_hook(mlx->mlx_w, mouse_hook, mlx);
