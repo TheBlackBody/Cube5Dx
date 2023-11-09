@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/08 20:50:08 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/08 23:42:49 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_wsize
 	int	s_x;
 	int	s_y;
 }	t_wsize;
+
+/* The next two sruct are for the assets */
 
 typedef struct	s_vector
 {

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/08 22:33:03 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:13:00 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static	void	ft_dda(t_pose *var, t_data *data)
 			var->map_y += var->step_y;
 			var->w_side = 1;
 		}
-		ft_printf("non\n");
-			ft_printf("oui %c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
+//		ft_printf("non\n");
+//			ft_printf("oui %c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
 	//	if (data->map[var->map_y][var->map_x] == '1')
 	//		var->is_hit = 1;
 		if (data->map[var->map_y][var->map_x] != '0')
@@ -92,8 +92,8 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 
 	if (data->map[var->map_y][var->map_x] == '1')
 	{
-		color = mcolor(0, 255, 0, 0);
-		if (var->w_side == 1)
+		color = mcolor(0, 255, 0, 0);// if w_side == 0 and wall > y player north
+		if (var->w_side == 1) // if x wall > x player alors west else east
 			color = mcolor(0, 255 / 2, 0, 0);
 	}
 	y = -1;
@@ -298,8 +298,8 @@ void	ft_game(t_mlx *mlx, t_data *data)
 //	free(data->map);
 //	data->mape = worldmap;
 	//	ft_printf("%p\n", mlx->mlx);
+//	ft_printf("coucou sasha\n");
 	mlx->var = &data->pose;
-	mlx->data = data;
 	mlx->var->x = 22;
 	mlx->var->y = 12;
 	ft_calculations(mlx, mlx->data);
@@ -309,7 +309,7 @@ void	ft_game(t_mlx *mlx, t_data *data)
 	mlx_hook(mlx->mlx_w, 6, 0L, mouse_hook, mlx);
 	mlx_hook(mlx->mlx_w, 2, 1L << 0, key_hook, mlx);
 //	mlx_loop_hook(mlx, ft_calc, mlx);
-	mlx_loop(mlx);
+	mlx_loop(mlx->mlx);
 }
 //au cas ou;
 //	else if (data->map[var->map_y][var->map_x] == 2)

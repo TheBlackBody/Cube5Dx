@@ -1,8 +1,7 @@
-
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./asset/brick.xpm
+SO ./asset/grass.xpm
+WE ./asset/diamond.xpm
+EA ./asset/exit.xpm
 
 F 220,100,0
 C 225,30,0
