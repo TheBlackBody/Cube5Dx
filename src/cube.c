@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/09 12:01:14 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:12:33 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	def_everything(t_mlx *mlx, t_data *data)
 	data->pose.move_speed = 0.15;
 	data->pose.rot_speed = 0.07;
 	mlx->data = data;
+	data->pose.mouse_x = -2147483648;
+	data->pose.mouse_y = -2147483648;
 	ft_ignit_sprite(data, mlx);
 //	char **temp;
 //	int	i;

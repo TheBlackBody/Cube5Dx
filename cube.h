@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/08 23:42:49 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:07:19 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_pose
 	double	ray_dir_y;
 	double	move_speed;
 	double	rot_speed;
+	int	mouse_x;
+	int	mouse_y;
 }	t_pose;
 
 typedef struct s_wsize

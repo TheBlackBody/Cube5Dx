@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/09 13:13:42 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:20:40 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,8 +277,27 @@ int	key_hook(int keycode, t_mlx *mlx)
 
 int	mouse_hook(int x, int y, t_mlx *mlx)
 {
-	(void)mlx;
-	ft_printf("x = %i, y = %i\n", x, y);
+	t_pose *var;
+
+	var = mlx->var;
+//	(void)mlx;
+	if (var->mouse_x == -2147483648 && var->mouse_y == -2147483648)
+	{
+		var->mouse_x = x;
+		var->mouse_y = y;
+		return (0);
+	}
+	if (var->mouse_x < x)
+	{
+		var->mouse_x = x;
+		rotat_right(mlx);
+	}
+	else if (var->mouse_x > x)
+	{
+		var->mouse_x = x;
+		rotat_left(mlx);
+	}
+//	ft_printf("x = %i, y = %i\n", x, y);
 	return (0);
 }
 
