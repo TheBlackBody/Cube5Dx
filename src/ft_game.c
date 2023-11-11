@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/10 16:20:40 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:40:45 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,13 @@ static	void	ft_dda(t_pose *var, t_data *data)
 //t_data temp
 static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
-	int	y;
-	int	color;
+	int		y;
+	int		color;
+	char	**F;
+	char	**C;
 
+	F = ft_split(data->F, ',');
+	C = ft_split(data->C, ',');
 	if (data->map[var->map_y][var->map_x] == '1')
 	{
 		color = mcolor(0, 255, 0, 0);// if w_side == 0 and wall > y player north
@@ -107,12 +111,12 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 			ft_pixel_put(mlx, x, y, color);
 		}
 		else if (y < var->draw_end)
-			ft_pixel_put(mlx, x, y, mcolor(0, 0, 0, 155));
+			ft_pixel_put(mlx, x, y, mcolor(0, ft_atoi(C[0]), ft_atoi(C[1]), ft_atoi(C[2])));
 		else
 		{
 		//	ft_printf("y = %i, non\n", y);
 			//	ft_printf("non\n");
-			ft_pixel_put(mlx, x, y, mcolor(0, 149, 69, 19));
+			ft_pixel_put(mlx, x, y, mcolor(0, ft_atoi(F[0]), ft_atoi(F[1]), ft_atoi(F[2])));
 		}
 	}
 }
@@ -182,17 +186,17 @@ void	move_left(int keycode, t_mlx *mlx)
 	var = mlx->var;
 	if (keycode == 0)
 	{
-	if (data->map[(int)var->y][(int)(var->x - var->dir_x * (var->move_speed * 1.2))] == '0')
-		var->x -= var->dir_y * var->move_speed;
-	if (data->map[(int)(var->y + var->dir_y * (var->move_speed * 1.2))][(int)var->x] == '0')
-		var->y += var->dir_x * var->move_speed;
+		if (data->map[(int)var->y][(int)(var->x - var->dir_x * (var->move_speed * 1.2))] == '0')
+			var->x -= var->dir_y * var->move_speed;
+		if (data->map[(int)(var->y + var->dir_y * (var->move_speed * 1.2))][(int)var->x] == '0')
+			var->y += var->dir_x * var->move_speed;
 	}
 	if (keycode == 2)
 	{
-	if (data->map[(int)var->y][(int)(var->x + var->dir_x * (var->move_speed * 1.2))] == '0')
-		var->x += var->dir_y * var->move_speed;
-	if (data->map[(int)(var->y - var->dir_y * (var->move_speed * 1.2))][(int)var->x] == '0')
-		var->y -= var->dir_x * var->move_speed;
+		if (data->map[(int)var->y][(int)(var->x + var->dir_x * (var->move_speed * 1.2))] == '0')
+			var->x += var->dir_y * var->move_speed;
+		if (data->map[(int)(var->y - var->dir_y * (var->move_speed * 1.2))][(int)var->x] == '0')
+			var->y -= var->dir_x * var->move_speed;
 	}
 	ft_calc(mlx);
 }
