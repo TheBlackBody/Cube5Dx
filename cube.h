@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/10 16:07:19 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:23:39 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ typedef struct s_mlx
 
 void    ft_close(void);
 void	ft_game(t_mlx *mlx, t_data *data);
-void    parse_path(char *path);
-char    **init_data(char *path, t_data *data);
+void    parse_path(char *path, int time);
+void	init_data(char *path, t_data *data);
 void    init_NO(char *line, t_data *data);
 void    init_SO(char *line, t_data *data);
 void    init_WE(char *line, t_data *data);

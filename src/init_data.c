@@ -6,11 +6,64 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/09 21:22:32 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:22:42 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
+
+int	check_num(char	*n)
+{
+	int	i;
+
+	i = 0;
+	while (n[i])
+	{
+		if (n[i] < 48 || n[i] > 57)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+void	check_data(t_data *data)
+{
+	char	**F;
+	char	**C;
+	int		n_F;
+	int		n_C;
+
+	F = ft_split(data->F, ',');
+	C = ft_split(data->C, ',');
+	n_F = -1;
+	n_C = -1;
+	while (F[++n_F])
+	{
+		if (check_num(F[n_F]) == -1)
+		{
+			ft_printf("Error : F collors should be in integer\n%s\n", F[n_F]);
+			ft_close();
+		}
+	}
+	while (C[++n_C])
+	{
+		if (check_num(C[n_C]) == -1)
+		{
+			ft_printf("Error : C collors should be in integer\n");
+			ft_close();
+		}
+	}
+	if (n_F != 3)
+	{
+		ft_printf("Error : F collors should be in RGB\n");
+		ft_close();
+	}
+	if (n_C != 3)
+	{
+		ft_printf("Error : C collors should be in RGB\n");
+		ft_close();
+	}
+}
 
 void	init(char **cdata, t_data *data)
 {
@@ -67,6 +120,11 @@ void	init_data(char *path, t_data *data)
 	ft_printf("tt\n");
 	init(cdata, data);
 	i = 0;
+	check_data(data);
+	parse_path(data->NO, 2);
+	parse_path(data->SO, 2);
+	parse_path(data->EA, 2);
+	parse_path(data->WE, 2);
 	while (data->map[i] != NULL)
 	{
 		ft_printf("%s\n", data->map[i]);

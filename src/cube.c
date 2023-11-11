@@ -6,11 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/11/10 16:12:33 by gpolve-g         ###   ########.fr       */
-=======
-/*   Updated: 2023/11/09 21:24:03 by sfernand         ###   ########.fr       */
->>>>>>> refs/remotes/origin/master
+/*   Updated: 2023/11/11 14:23:26 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +97,7 @@ int main(int argc, char **argv)
 	i = 0;
 	if (argc == 2)
 	{
-		parse_path(argv[1]);
+		parse_path(argv[1], 1);
 		init_data(argv[1], &data);
 		while (data.map[i] != NULL)
 		{
