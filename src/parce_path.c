@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/11 14:28:53 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:54:00 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	veriffile(char *path, int time)
 
 void	verifname(char *path, int i, int n, char *extention)
 {
-	int j;
+//	int j;
 
-	j = 0;
+//	j = 0;
 	while (path[i++] != '\0' && n < ((int)ft_strllen(extention) - 1))
 	{
 		if (path[i] != extention[n])

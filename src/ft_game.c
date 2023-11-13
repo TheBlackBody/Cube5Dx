@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/11 14:40:45 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:19:25 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,43 @@ static	void	ft_dda(t_pose *var, t_data *data)
 		var->len_ray = var->side_dist_y - var->delt_dist_y;
 }
 
+static	t_image	*ft_select_text(t_pose *var, t_data *data)
+{
+	if (var->w_side == 0)
+	{
+		if (var->map_y < (int)var->y)
+			return (&data->south);
+		else
+			return (&data->north);
+	}
+	else
+	{
+		if (var->map_x > (int)var->x)
+			return (&data->west);
+		else
+			return (&data->east);
+	}
+}
+
 //t_data temp
 static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
 	int		y;
 	int		color;
+	t_image		*w_text;
 	char	**F;
 	char	**C;
 
 	F = ft_split(data->F, ',');
 	C = ft_split(data->C, ',');
-	if (data->map[var->map_y][var->map_x] == '1')
-	{
+//	if (data->map[var->map_y][var->map_x] == '1')
+//	{
+	w_text = ft_select_text(var, data);
+	(void)w_text;
 		color = mcolor(0, 255, 0, 0);// if w_side == 0 and wall > y player north
 		if (var->w_side == 1) // if x wall > x player alors west else east
 			color = mcolor(0, 255 / 2, 0, 0);
-	}
+//	}
 	y = -1;
 	//	color = color / 2;
 	while (++y < mlx->size.s_y)
