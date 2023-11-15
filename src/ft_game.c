@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/15 16:09:52 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:24:02 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,16 +245,16 @@ void	move_left(int keycode, t_mlx *mlx)
 	var = mlx->var;
 	if (keycode == 0)
 	{
-		if (data->map[(int)var->y][(int)(var->x - var->dir_x * (var->move_speed * 1.2))] != '1')
+		if (data->map[(int)var->y][(int)(var->x - var->dir_y * (var->move_speed * 1.2))] != '1')
 			var->x -= var->dir_y * var->move_speed;
-		if (data->map[(int)(var->y + var->dir_y * (var->move_speed * 1.2))][(int)var->x] != '1')
+		if (data->map[(int)(var->y + var->dir_x * (var->move_speed * 1.2))][(int)var->x] != '1')
 			var->y += var->dir_x * var->move_speed;
 	}
 	if (keycode == 2)
 	{
-		if (data->map[(int)var->y][(int)(var->x + var->dir_x * (var->move_speed * 1.2))] != '1')
+		if (data->map[(int)var->y][(int)(var->x + var->dir_y * (var->move_speed * 1.2))] != '1')
 			var->x += var->dir_y * var->move_speed;
-		if (data->map[(int)(var->y - var->dir_y * (var->move_speed * 1.2))][(int)var->x] != '1')
+		if (data->map[(int)(var->y - var->dir_x * (var->move_speed * 1.2))][(int)var->x] != '1')
 			var->y -= var->dir_x * var->move_speed;
 	}
 	ft_calc(mlx);
