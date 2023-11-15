@@ -6,12 +6,13 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/13 15:19:25 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:09:38 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
+//not working
 static double	ft_abs(double val)
 {
 	if (val < 0)
@@ -55,7 +56,6 @@ static	void	ft_calcul_step(t_pose *var)
 
 static	void	ft_dda(t_pose *var, t_data *data)
 {
-//	(void)data;
 	while (var->is_hit == 0)
 	{
 		if (var->side_dist_x < var->side_dist_y)
@@ -70,13 +70,8 @@ static	void	ft_dda(t_pose *var, t_data *data)
 			var->map_y += var->step_y;
 			var->w_side = 1;
 		}
-//		ft_printf("non\n");
-//			ft_printf("oui %c\n%i\n%i\n", data->map[var->map_y][var->map_x], var->map_x, var->map_y);
-	//	if (data->map[var->map_y][var->map_x] == '1')
-	//		var->is_hit = 1;
 		if (data->map[var->map_y][var->map_x] == '1')
 			var->is_hit = 1;
-		//	ft_printf("coucou\n");
 	}
 	if (var->w_side == 0)
 		var->len_ray = var->side_dist_x - var->delt_dist_x;
@@ -86,41 +81,84 @@ static	void	ft_dda(t_pose *var, t_data *data)
 
 static	t_image	*ft_select_text(t_pose *var, t_data *data)
 {
-	if (var->w_side == 0)
+	if (var->w_side == 1)
 	{
 		if (var->map_y < (int)var->y)
+		{
+//			var->side = 2;
 			return (&data->south);
+		}
 		else
+		{
+//			var->side = 1;
 			return (&data->north);
+		}
 	}
 	else
 	{
 		if (var->map_x > (int)var->x)
+		{
+//			var->side = 3;
 			return (&data->west);
+		}
 		else
+		{
+//			var->side = 4;
 			return (&data->east);
+		}
 	}
 }
 
+static int	text_color(t_image *w_text, t_pose *var, int tex_x)
+{
+	int	tex_y;
+	int	color;
+
+//	if (var->side == 1)
+//		return(mcolor(0, 155, 0, 0));
+//	if (var->side == 2)
+//		return(mcolor(0, 0, 155, 0));
+//	if (var->side == 3)
+//		return(mcolor(0, 0, 0, 155));
+//	if (var->side == 4)
+//		return(mcolor(0, 155, 155, 0));
+	tex_y = (int)var->tex_pos; //manque la secu si overflow
+	if (var->tex_pos > 2147483647.0)
+		tex_y = var->text_height - 1;
+	var->tex_pos += var->step;
+	color = w_text->pixels[var->text_height * tex_y + tex_x];
+	return (color);
+}
 //t_data temp
 static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
 	int		y;
-	int		color;
 	t_image		*w_text;
+	double		wall_x;
+	int		tex_x;
 	char	**F;
 	char	**C;
 
 	F = ft_split(data->F, ',');
 	C = ft_split(data->C, ',');
-//	if (data->map[var->map_y][var->map_x] == '1')
-//	{
 	w_text = ft_select_text(var, data);
-	(void)w_text;
-		color = mcolor(0, 255, 0, 0);// if w_side == 0 and wall > y player north
-		if (var->w_side == 1) // if x wall > x player alors west else east
-			color = mcolor(0, 255 / 2, 0, 0);
+	if (var->w_side == 0)
+		wall_x = var->y + var->len_ray * var->ray_dir_y;
+	else
+		wall_x = var->x + var->len_ray * var->ray_dir_x;
+	wall_x -= (double)((int)wall_x);
+	tex_x = (int)(wall_x * (double)var->text_width);
+	if (var->w_side == 0 && var->ray_dir_x > 0)
+		tex_x = var->text_width - tex_x - 1;
+	if (var->w_side == 1 && var->ray_dir_x < 0)
+		tex_x = var->text_width - tex_x - 1;
+
+//		color = mcolor(0, 255, 0, 0);// if w_side == 0 and wall > y player north
+//		if (var->w_side == 1) // if x wall > x player alors west else east
+//			color = mcolor(0, 255 / 2, 0, 0);
 //	}
+	var->step = 1.0 * var->text_height / var->line_height;
+	var->tex_pos = (var->draw_start - mlx->size.s_y / 2 + var->line_height / 2) * var->step;
 	y = -1;
 	//	color = color / 2;
 	while (++y < mlx->size.s_y)
@@ -129,7 +167,7 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 		if (y >= var->draw_start && y <= var->draw_end)
 		{
 		//	ft_printf("y = %i, oui\n", y);
-			ft_pixel_put(mlx, x, y, color);
+			ft_pixel_put(mlx, x, y, text_color(w_text, var, tex_x));
 		}
 		else if (y < var->draw_end)
 			ft_pixel_put(mlx, x, y, mcolor(0, ft_atoi(C[0]), ft_atoi(C[1]), ft_atoi(C[2])));
@@ -145,13 +183,13 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 //t_data temp
 static	void	ft_line_height(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
-	int	line_height;
 
-	line_height = (int)(mlx->size.s_y / var->len_ray);
-	var->draw_start = -line_height / 2 + mlx->size.s_y / 2;
+//	int	line_height;
+	var->line_height = (int)(mlx->size.s_y / var->len_ray);
+	var->draw_start = -var->line_height / 2 + mlx->size.s_y / 2;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
-	var->draw_end = line_height / 2 + mlx->size.s_y / 2;//ca devrait etre end mais fonc pa
+	var->draw_end = var->line_height / 2 + mlx->size.s_y / 2;
 	if (var->draw_end >= mlx->size.s_y)
 		var->draw_end = mlx->size.s_y - 1;
 	ft_put_line(mlx, var, x, data);

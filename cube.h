@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/13 15:01:24 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:57:59 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ typedef struct s_pose
 	int	step_y;
 	int	is_hit; //yes or no
 	int	w_side; // N S E W ?
+	int	line_height;
 	int	draw_start;
 	int	draw_end;
+	double	step;
+	double	tex_pos;
 	double	x;
 	double	y;
 	int	map_x;
@@ -60,6 +63,7 @@ typedef struct s_pose
 	int	mouse_y;
 	int	text_width;
 	int	text_height;
+	int	side; // supp ensuite
 }	t_pose;
 
 typedef struct s_wsize
