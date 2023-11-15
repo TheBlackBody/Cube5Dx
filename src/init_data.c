@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/11 14:22:42 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:47:24 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	check_data(t_data *data)
 			ft_printf("Error : F collors should be in integer\n%s\n", F[n_F]);
 			ft_close();
 		}
+		free(F[n_F]);
 	}
 	while (C[++n_C])
 	{
@@ -52,6 +53,7 @@ void	check_data(t_data *data)
 			ft_printf("Error : C collors should be in integer\n");
 			ft_close();
 		}
+		free(C[n_C]);
 	}
 	if (n_F != 3)
 	{
@@ -63,6 +65,8 @@ void	check_data(t_data *data)
 		ft_printf("Error : C collors should be in RGB\n");
 		ft_close();
 	}
+	free(F);
+	free(C);
 }
 
 void	init(char **cdata, t_data *data)
@@ -74,7 +78,6 @@ void	init(char **cdata, t_data *data)
 	n = ft_strllen(cdata[i]);
 	data->map = (char **)malloc(sizeof (char *) * (n * 100));
 	n = 0;
-	ft_printf("t2\n");
 	while (cdata[i])
 	{
 		if (i < 7)
@@ -89,8 +92,10 @@ void	init(char **cdata, t_data *data)
 			data->map[n] = ft_strdup(cdata[i]);
 			n++;
 		}
+		free(cdata[i]);
 		i++;
 	}
+	free(cdata[i]);
 	data->map[n] = NULL;
 }
 
@@ -107,6 +112,7 @@ void	init_data(char *path, t_data *data)
 		line = get_next_line(fd);
 	i = ft_strllen(line);
 	close(fd);
+	free(line);
 	cdata = (char **)malloc(sizeof (char *) * (i * 100));
 	fd = open(path, O_RDONLY);
 	i = 0;
@@ -131,4 +137,5 @@ void	init_data(char *path, t_data *data)
 		i++;
 	}
 	ft_printf("OK\n");
+	free (cdata);
 }

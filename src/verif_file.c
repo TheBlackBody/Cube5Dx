@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:47:46 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/14 02:06:09 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:02:35 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,11 @@ void    verif_map(t_data *data)
     data->pose.x = x;
     data->pose.y = y;
     flood_fill(map, x, y);
+    y = 0;
+    while (map[y] != NULL)
+    {
+		free(map[y]);
+		y++;
+	}
+    free(map);
 }
