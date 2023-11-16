@@ -1,7 +1,7 @@
-NO ./asset/brick.xpm
-SO ./asset/grass.xpm
-WE ./asset/diamond.xpm
-EA ./asset/exit.xpm
+NO ./asset/pics/pillar.xpm
+SO ./asset/pics/mossy.xpm
+WE ./asset/pics/wood.xpm
+EA ./asset/pics/eagle.xpm
 
 F 149,69,19
 C 0,0,155

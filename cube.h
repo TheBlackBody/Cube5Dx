@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/15 12:57:59 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:14:38 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,15 +137,19 @@ void    init_EA(char *line, t_data *data);
 void	ft_ignit_sprite(t_data *data, t_mlx *mlx);
 void	ft_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	move_front(int keycode, t_mlx *mlx);
+void	move_left(int keycode, t_mlx *mlx);
 void	rotat_left(t_mlx *mlx);
 void	rotat_right(t_mlx *mlx);
 void	put_image(t_mlx *mlx);
 void    verif_map(t_data *data);
+void	ft_calculations(t_mlx *mlx, t_data *data);
+double	ft_abs(double val);
 int	ft_close_w(t_mlx *mlx);
 int	ft_calc(t_mlx *mlx);
 int	key_hook(int keycode, t_mlx *mlx);
 int	mouse_hook(int x, int y, t_mlx *mlx);
 int	mcolor(int t, int r, int g, int b);
 int     lenx(char **map, int y);
+t_image	*ft_select_text(t_pose *var, t_data *data);
 
 #endif

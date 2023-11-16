@@ -6,7 +6,7 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/11/08 21:46:39 by gpolve-g         ###   ########.fr        #
+#    Updated: 2023/11/16 15:15:09 by gpolve-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,10 @@ FILES = cube \
 		init_file \
 		verif_file \
 		ft_game \
+		moves \
+		textures \
+		hooks \
+		utils \
 		put_pixel
 
 GNL_FILE = get_next_line \
