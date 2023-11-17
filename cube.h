@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/16 15:14:38 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:28:22 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,17 @@ typedef struct s_wsize
 
 /* The next two sruct are for the assets */
 
-typedef struct	s_vector
-{
-    int	x;
-    int	y;
-}                t_vector;
+//typedef struct	s_vector
+//{
+ //   int	x;
+  //  int	y;
+//}                t_vector;
 
 typedef struct	s_image
 {
 	void	*referenc;
-	t_vector	size;
+//	t_vector	size;
+	t_wsize		size;
 	char	*pixels;
 	int		bits_per_pixel;
 	int		line_size;

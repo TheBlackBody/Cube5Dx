@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/17 16:22:46 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:35:53 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,23 @@ static	void	ft_dda(t_pose *var, t_data *data)
 	else
 		var->len_ray = var->side_dist_y - var->delt_dist_y;
 }
+static int    get_pixel_color(t_image *text, int x, int y)
+{
+    unsigned int    color;
+    char            *pixel;
 
+    x %= text->size.s_x;
+    y %= text->size.s_y;
+    pixel = text->referenc + (y * text->line_size
+            + x * (text->bits_per_pixel / 8));
+    color = *(unsigned int *)pixel;
+    return (color);
+}
 static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 {
 	int	tex_y;
-	int	color;
-	char *temp;
+//	int	color;
+//	char *temp;
 
 //	if (var->side == 1)
 //		return(mcolor(0, 155, 0, 0));
@@ -92,10 +103,10 @@ static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 		tex_y = var->text_height - 1;
 	var->tex_pos += var->step;
 //	color = w_text->pixels[var->text_height * tex_y + tex_x];
-	temp = w_text->referenc + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
-	color = *(unsigned int *)temp;
+//	temp = w_text->referenc + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
+//	color = *(unsigned int *)temp;
 //	ft_printf("coucou monsieur\n");
-	return (color);
+	return (get_pixel_color(w_text, tex_x, tex_y));
 }
 //t_data temp
 static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
@@ -116,17 +127,17 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 		wall_x = var->x + var->len_ray * var->ray_dir_x;
 	wall_x -= (double)((int)wall_x);
 //	wall_x -= floor(wall_x);
-	tex_x = (int)(wall_x * (double)var->text_width);
+	tex_x = (int)(wall_x * (double)w_text->size.s_x);
 	if (var->w_side == 0 && var->ray_dir_x > 0)
-		tex_x = var->text_width - tex_x - 1;
+		tex_x = w_text->size.s_x - tex_x - 1;
 	if (var->w_side == 1 && var->ray_dir_x < 0)
-		tex_x = var->text_width - tex_x - 1;
+		tex_x = w_text->size.s_x - tex_x - 1;
 
 //		color = mcolor(0, 255, 0, 0);// if w_side == 0 and wall > y player north
 //		if (var->w_side == 1) // if x wall > x player alors west else east
 //			color = mcolor(0, 255 / 2, 0, 0);
 //	}
-	var->step = 1.0 * var->text_height / var->line_height;
+	var->step = 1.0 * w_text->size.s_y / var->line_height;
 	var->tex_pos = (var->draw_start - mlx->size.s_y / 2 + var->line_height / 2) * var->step;
 	y = -1;
 	while (++y < mlx->size.s_y)

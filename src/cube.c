@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/17 16:27:03 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:32:26 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void    ft_close(void)
 
 void	ft_ignit_sprite(t_data *data, t_mlx *mlx)
 {
-	data->north.referenc = mlx_xpm_file_to_image(mlx->mlx, data->NO ,&data->north.size.x, &data->north.size.y);
+	data->north.referenc = mlx_xpm_file_to_image(mlx->mlx, data->NO ,&data->north.size.s_x, &data->north.size.s_y);
 //	ft_printf("\ndata NO = \n%s\n", data->NO);
 //	ft_printf("\ndata size north y = \n%i\n", data->north.size.y);
 	data->north.pixels = mlx_get_data_addr(data->north.referenc, &data->north.bits_per_pixel, &data->north.line_size, &data->north.endian);
-	data->south.referenc = mlx_xpm_file_to_image(mlx->mlx, data->SO ,&data->south.size.x, &data->south.size.y);
+	data->south.referenc = mlx_xpm_file_to_image(mlx->mlx, data->SO ,&data->south.size.s_x, &data->south.size.s_y);
 //      ft_printf("\ndata SO = \n%s\n", data->SO);
 	data->south.pixels = mlx_get_data_addr(data->south.referenc, &data->south.bits_per_pixel, &data->south.line_size, &data->south.endian);
-	data->west.referenc = mlx_xpm_file_to_image(mlx->mlx, data->WE ,&data->west.size.x, &data->west.size.y);
+	data->west.referenc = mlx_xpm_file_to_image(mlx->mlx, data->WE ,&data->west.size.s_x, &data->west.size.s_y);
 //      ft_printf("\ndata WE = \n%s\n", data->WE);
 	data->west.pixels = mlx_get_data_addr(data->west.referenc, &data->west.bits_per_pixel, &data->west.line_size, &data->west.endian);
-      data->east.referenc = mlx_xpm_file_to_image(mlx->mlx, data->EA ,&data->east.size.x, &data->east.size.y);
+      data->east.referenc = mlx_xpm_file_to_image(mlx->mlx, data->EA ,&data->east.size.s_x, &data->east.size.s_y);
 //      ft_printf("\ndata EA = \n%s\n", data->EA);
 	data->east.pixels = mlx_get_data_addr(data->east.referenc, &data->east.bits_per_pixel, &data->east.line_size, &data->east.endian);
 	data->pose.text_width = 32;
