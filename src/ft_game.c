@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/16 15:50:47 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:22:46 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 {
 	int	tex_y;
 	int	color;
-//	char *temp;
+	char *temp;
 
 //	if (var->side == 1)
 //		return(mcolor(0, 155, 0, 0));
@@ -91,9 +91,10 @@ static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 	if (var->tex_pos > 2147483647.0)
 		tex_y = var->text_height - 1;
 	var->tex_pos += var->step;
-	color = w_text->pixels[var->text_height * tex_y + tex_x];
-//	temp = w_text->referenc + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
-//	color = *(unsigned int *)temp;
+//	color = w_text->pixels[var->text_height * tex_y + tex_x];
+	temp = w_text->referenc + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
+	color = *(unsigned int *)temp;
+//	ft_printf("coucou monsieur\n");
 	return (color);
 }
 //t_data temp
@@ -186,7 +187,7 @@ void	ft_game(t_mlx *mlx, t_data *data)
 	mlx_hook(mlx->mlx_w, 17, (1L << 19), ft_close_w, mlx);
 	mlx_hook(mlx->mlx_w, 6, 0L, mouse_hook, mlx);
 	mlx_hook(mlx->mlx_w, 2, 1L << 0, key_hook, mlx);
-//	mlx_loop_hook(mlx, ft_calc, mlx);
+//	mlx_loop_hook(mlx->mlx, ft_calc, mlx);
 	mlx_loop(mlx->mlx);
 }
 //au cas ou;
