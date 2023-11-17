@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/17 22:21:39 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 00:39:48 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,23 @@ static	void	ft_dda(t_pose *var, t_data *data)
 	else
 		var->len_ray = var->side_dist_y - var->delt_dist_y;
 }
-static int    get_pixel_color(t_image *text, int x, int y)
+#include <stdio.h>
+static unsigned int    get_pixel_color(t_image *text, int x, int y)
 {
     unsigned int    color;
     char            *pixel;
 
     x %= text->size.s_x;
     y %= text->size.s_y;
-    pixel = text->referenc + (y * text->line_size
+ //   printf("x = %i, y = %i\n", x, y);
+    pixel = text->pixels + (y * text->line_size
             + x * (text->bits_per_pixel / 8));
     color = *(unsigned int *)pixel;
+//    printf("color = %i\n", color);
     return (color);
 }
-#include <stdio.h>
-static int	text_color(t_image *w_text, t_pose *var, int tex_x)
+
+static unsigned int	text_color(t_image *w_text, t_pose *var, int tex_x)
 {
 	int	tex_y;
 //	int	color;
@@ -111,6 +114,7 @@ static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 //	ft_printf("coucou monsieur\n");
 	return (get_pixel_color(w_text, tex_x, tex_y));
 }
+#include <stdio.h>
 //t_data temp
 static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
@@ -141,13 +145,25 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 //			color = mcolor(0, 255 / 2, 0, 0);
 //	}
 	var->step = 1.0 * w_text->size.s_y / var->line_height;
-    printf("step = %f\n", var->step);
-    printf("draw_start = %i\n", var->draw_start);
-    printf("s.y = %i\n", mlx->size.s_y);
-    printf("line_height = %i\n", var->line_height);
+  //  printf("step = %f\n", var->step);
+    //printf("draw_start = %i\n", var->draw_start);
+//    printf("s.y = %i\n", mlx->size.s_y);
+  //  printf("line_height = %i\n", var->line_height);
 	var->tex_pos = (var->draw_start - mlx->size.s_y / 2 + var->line_height / 2) * var->step;
-printf("calcul before * step = %f\n",(var->draw_start - mlx->size.s_y / 2 + (double)(var->line_height / 2)));
-    printf("tex_pos = %f\n", var->tex_pos);
+//printf("calcul before * step = %f\n",(var->draw_start - mlx->size.s_y / 2 + (double)(var->line_height / 2)));
+ //   printf("tex_pos = %f\n", var->tex_pos);
+   // y = var->draw_start;
+   /* (void)F;
+    (void)C;
+    while (y < var->draw_end)
+    {
+	    int texy = (int)(var->tex_pos) & (var->text_height - 1);
+	    var->tex_pos += var->step;
+	   unsigned int color = w_text->pixels[var->text_height * texy + tex_x];
+	 //   var->buffer[y][x] = color;
+	ft_pixel_put(mlx, x, y, color);
+	    y++;
+    }*/
 	y = -1;
 	while (++y < mlx->size.s_y)
 	{

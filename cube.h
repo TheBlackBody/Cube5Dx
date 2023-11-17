@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/17 17:28:22 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/17 23:48:30 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ int	ft_calc(t_mlx *mlx);
 int	key_hook(int keycode, t_mlx *mlx);
 int	mouse_hook(int x, int y, t_mlx *mlx);
 int	mcolor(int t, int r, int g, int b);
+//int    get_pixel_color(t_image *text, int x, int y); //a sup pt
 int     lenx(char **map, int y);
 t_image	*ft_select_text(t_pose *var, t_data *data);
 
