@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/17 18:35:53 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/17 22:21:39 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static int    get_pixel_color(t_image *text, int x, int y)
     color = *(unsigned int *)pixel;
     return (color);
 }
+#include <stdio.h>
 static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 {
 	int	tex_y;
@@ -98,9 +99,11 @@ static int	text_color(t_image *w_text, t_pose *var, int tex_x)
 //		return(mcolor(0, 0, 0, 155));
 //	if (var->side == 4)
 //		return(mcolor(0, 155, 155, 0));
-	tex_y = (int)var->tex_pos; //manque la secu si overflow
-	if (var->tex_pos > 2147483647.0)
-		tex_y = var->text_height - 1;
+//    printf("tex_pos = %f\n", var->tex_pos);
+	tex_y = (int)var->tex_pos & (var->text_height - 1);
+//    printf("tex_y = %i\n", tex_y);
+//	if (var->tex_pos > 2147483647.0)
+//		tex_y = var->text_height - 1;
 	var->tex_pos += var->step;
 //	color = w_text->pixels[var->text_height * tex_y + tex_x];
 //	temp = w_text->referenc + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
@@ -138,7 +141,13 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 //			color = mcolor(0, 255 / 2, 0, 0);
 //	}
 	var->step = 1.0 * w_text->size.s_y / var->line_height;
+    printf("step = %f\n", var->step);
+    printf("draw_start = %i\n", var->draw_start);
+    printf("s.y = %i\n", mlx->size.s_y);
+    printf("line_height = %i\n", var->line_height);
 	var->tex_pos = (var->draw_start - mlx->size.s_y / 2 + var->line_height / 2) * var->step;
+printf("calcul before * step = %f\n",(var->draw_start - mlx->size.s_y / 2 + (double)(var->line_height / 2)));
+    printf("tex_pos = %f\n", var->tex_pos);
 	y = -1;
 	while (++y < mlx->size.s_y)
 	{
@@ -156,7 +165,7 @@ static	void	ft_line_height(t_mlx *mlx, t_pose *var, int x, t_data *data)
 {
 
 	var->line_height = (int)(mlx->size.s_y / var->len_ray);
-	var->draw_start = -var->line_height / 2 + mlx->size.s_y / 2;
+	var->draw_start = -(var->line_height) / 2 + mlx->size.s_y / 2;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
 	var->draw_end = var->line_height / 2 + mlx->size.s_y / 2;
