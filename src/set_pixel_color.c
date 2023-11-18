@@ -6,7 +6,7 @@
 /*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 02:45:36 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/18 03:24:45 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:21:54 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 	while (++y < mlx->size.s_y)
 	{
 		if (y >= var->draw_start && y <= var->draw_end)
-			ft_pixel_put(mlx, mlx->size.s_x - x, y,
+			ft_pixel_put(mlx, mlx->size.s_x - x - 1, y,
 				text_color(w_text, var, tex_x));
 		else if (y < var->draw_end)
-			ft_pixel_put(mlx, mlx->size.s_x - x, y,
+			ft_pixel_put(mlx, mlx->size.s_x - x - 1, y,
 				mcolor(0, ft_atoi(var->c[0]),
 					ft_atoi(var->c[1]), ft_atoi(var->c[2])));
 		else
-			ft_pixel_put(mlx, mlx->size.s_x - x, y,
+			ft_pixel_put(mlx, mlx->size.s_x - x - 1, y,
 				mcolor(0, ft_atoi(var->f[0]),
 					ft_atoi(var->f[1]), ft_atoi(var->f[2])));
 	}
