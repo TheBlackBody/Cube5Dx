@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/17 23:48:30 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 02:57:31 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_pose
 	int	text_width;
 	int	text_height;
 	int	side; // supp ensuite
+	char	**f;
+	char	**c;
 }	t_pose;
 
 typedef struct s_wsize
@@ -143,7 +145,11 @@ void	rotat_left(t_mlx *mlx);
 void	rotat_right(t_mlx *mlx);
 void	put_image(t_mlx *mlx);
 void    verif_map(t_data *data);
+void	ft_calcul_delt(t_pose *var);
+void	ft_calcul_step(t_pose *var);
+void	ft_dda(t_pose *var, t_data *data);
 void	ft_calculations(t_mlx *mlx, t_data *data);
+void	ft_line_height(t_mlx *mlx, t_pose *var, int x, t_data *data);
 double	ft_abs(double val);
 int	ft_close_w(t_mlx *mlx);
 int	ft_calc(t_mlx *mlx);
