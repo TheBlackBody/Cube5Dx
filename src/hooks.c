@@ -6,7 +6,7 @@
 /*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:11:44 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/16 15:12:40 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 01:27:42 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	mouse_hook(int x, int y, t_mlx *mlx)
 		var->mouse_y = y;
 		return (0);
 	}
-	if (var->mouse_x < x)
+	if (var->mouse_x > x)
 	{
 		var->mouse_x = x;
 		rotat_right(mlx);
 	}
-	else if (var->mouse_x > x)
+	else if (var->mouse_x < x)
 	{
 		var->mouse_x = x;
 		rotat_left(mlx);

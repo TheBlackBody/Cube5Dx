@@ -6,7 +6,7 @@
 /*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:03:40 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/16 15:06:02 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 01:27:31 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	move_left(int keycode, t_mlx *mlx)
 
 	data = mlx->data;
 	var = mlx->var;
-	if (keycode == 0)
+	if (keycode == 2)
 	{
 		if (data->map[(int)var->y][(int)(var->x - var->dir_y * (var->move_speed * 1.2))] != '1')
 			var->x -= var->dir_y * var->move_speed;
 		if (data->map[(int)(var->y + var->dir_x * (var->move_speed * 1.2))][(int)var->x] != '1')
 			var->y += var->dir_x * var->move_speed;
 	}
-	if (keycode == 2)
+	if (keycode == 0)
 	{
 		if (data->map[(int)var->y][(int)(var->x + var->dir_y * (var->move_speed * 1.2))] != '1')
 			var->x += var->dir_y * var->move_speed;

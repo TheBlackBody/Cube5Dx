@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:49:33 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/18 00:39:48 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 01:24:45 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,10 @@ static unsigned int	text_color(t_image *w_text, t_pose *var, int tex_x)
 //		tex_y = var->text_height - 1;
 	var->tex_pos += var->step;
 //	color = w_text->pixels[var->text_height * tex_y + tex_x];
-//	temp = w_text->referenc + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
+//	temp = w_text->pixels + (w_text->line_size * tex_y + tex_x * (w_text->bits_per_pixel / 8));
 //	color = *(unsigned int *)temp;
 //	ft_printf("coucou monsieur\n");
+//return (color);
 	return (get_pixel_color(w_text, tex_x, tex_y));
 }
 #include <stdio.h>
@@ -168,11 +169,11 @@ static	void	ft_put_line(t_mlx *mlx, t_pose *var, int x, t_data *data)
 	while (++y < mlx->size.s_y)
 	{
 		if (y >= var->draw_start && y <= var->draw_end)
-			ft_pixel_put(mlx, x, y, text_color(w_text, var, tex_x));
+			ft_pixel_put(mlx, mlx->size.s_x - x, y, text_color(w_text, var, tex_x));
 		else if (y < var->draw_end)
-			ft_pixel_put(mlx, x, y, mcolor(0, ft_atoi(C[0]), ft_atoi(C[1]), ft_atoi(C[2])));
+			ft_pixel_put(mlx, mlx->size.s_x - x, y, mcolor(0, ft_atoi(C[0]), ft_atoi(C[1]), ft_atoi(C[2])));
 		else
-			ft_pixel_put(mlx, x, y, mcolor(0, ft_atoi(F[0]), ft_atoi(F[1]), ft_atoi(F[2])));
+			ft_pixel_put(mlx, mlx->size.s_x - x, y, mcolor(0, ft_atoi(F[0]), ft_atoi(F[1]), ft_atoi(F[2])));
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/17 23:48:21 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 01:21:45 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static void	def_everything(t_mlx *mlx, t_data *data)
 	data->pose.dir_y = 0;
 	data->pose.plane_x = 0;
 	data->pose.plane_y = 0.66;
-	data->pose.cur_time = 0;
-	data->pose.prev_time = 0;
+//	data->pose.cur_time = 0;
+//	data->pose.prev_time = 0;
 	data->pose.move_speed = 0.15;
 	data->pose.rot_speed = 0.07;
 	mlx->data = data;
