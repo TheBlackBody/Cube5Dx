@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/18 02:57:31 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 04:00:32 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct	s_image
 	void	*referenc;
 //	t_vector	size;
 	t_wsize		size;
-	char	*pixels;
+	void	*pixels;
 	int		bits_per_pixel;
 	int		line_size;
 	int		endian;

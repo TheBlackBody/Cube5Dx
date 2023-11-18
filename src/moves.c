@@ -6,7 +6,7 @@
 /*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:03:40 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/18 03:30:26 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/18 04:06:05 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	move_front(int keycode, t_mlx *mlx)
 			* (var->move_speed * 1.2))] != '1')
 			var->x += var->dir_x * var->move_speed;
 		if (data->map[(int)(var->y + var->dir_y
-				* (var->move_speed* 1.2))][(int)var->x] != '1')
+				* (var->move_speed * 1.2))][(int)var->x] != '1')
 			var->y += var->dir_y * var->move_speed;
 	}
 	if (keycode == 1)
