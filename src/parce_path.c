@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/15 13:38:15 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/18 22:38:41 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,21 @@ void	veriffile(char *path, int time)
 
 void	verifname(char *path, int i, int n, char *extention)
 {
-//	int j;
-
-//	j = 0;
 	while (path[i++] != '\0' && n < ((int)ft_strllen(extention) - 1))
 	{
 		if (path[i] != extention[n])
 		{
-			ft_printf("Error: your map or your texture name does have extention <.cube>");
-			ft_printf(" or <.xpm> if is texture\n");
+			ft_printf("Error: your map or your texture name does have");
+			ft_printf(" extention <.cube> or <.xpm> if is texture\n");
 			ft_close();
 		}
 		n++;
 	}
 }
 
-void    parse_path(char *path, int time)
+void	parse_path(char *path, int time)
 {
-    int		i;
+	int		i;
 	int		n;
 	char	*extention;
 

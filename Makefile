@@ -6,7 +6,7 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/11/18 02:48:03 by gpolve-g         ###   ########.fr        #
+#    Updated: 2023/11/19 14:50:15 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ FILES = cube \
 		utils \
 		calculations \
 		set_pixel_color \
-		put_pixel
+		put_pixel \
+		parcing_utils \
+		check_map
 
 GNL_FILE = get_next_line \
 			get_next_line_utils

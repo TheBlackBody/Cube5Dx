@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/15 15:47:24 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/19 13:50:29 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,45 +28,39 @@ int	check_num(char	*n)
 
 void	check_data(t_data *data)
 {
-	char	**F;
-	char	**C;
-	int		n_F;
-	int		n_C;
+	char	**f;
+	char	**c;
+	int		n_f;
+	int		n_c;
 
-	F = ft_split(data->F, ',');
-	C = ft_split(data->C, ',');
-	n_F = -1;
-	n_C = -1;
-	while (F[++n_F])
-	{
-		if (check_num(F[n_F]) == -1)
-		{
-			ft_printf("Error : F collors should be in integer\n%s\n", F[n_F]);
-			ft_close();
-		}
-		free(F[n_F]);
-	}
-	while (C[++n_C])
-	{
-		if (check_num(C[n_C]) == -1)
-		{
-			ft_printf("Error : C collors should be in integer\n");
-			ft_close();
-		}
-		free(C[n_C]);
-	}
-	if (n_F != 3)
+	f = ft_split(data->F, ',');
+	c = ft_split(data->C, ',');
+	n_f = -1;
+	n_c = -1;
+	while (f[++n_f])
+		check_data_utils(f, c, n_f, 100);
+	while (c[++n_c])
+		check_data_utils(f, c, 100, n_c);
+	if (n_f != 3)
 	{
 		ft_printf("Error : F collors should be in RGB\n");
 		ft_close();
 	}
-	if (n_C != 3)
+	if (n_c != 3)
 	{
 		ft_printf("Error : C collors should be in RGB\n");
 		ft_close();
 	}
-	free(F);
-	free(C);
+	free(f);
+	free(c);
+}
+
+void	initvalue(char **cdata, t_data *data, int i)
+{
+	init_no(cdata[i], data);
+	init_so(cdata[i], data);
+	init_we(cdata[i], data);
+	init_ea(cdata[i], data);
 }
 
 void	init(char **cdata, t_data *data)
@@ -82,10 +76,7 @@ void	init(char **cdata, t_data *data)
 	{
 		if (i < 7)
 		{
-			init_NO(cdata[i], data);
-            init_SO(cdata[i], data);
-            init_WE(cdata[i], data);
-            init_EA(cdata[i], data);
+			initvalue(cdata, data, i);
 		}
 		else if (i >= 7 && (cdata[i][0] != '\n' && cdata[i]))
 		{
@@ -123,19 +114,7 @@ void	init_data(char *path, t_data *data)
 		cdata[i] = get_next_line(fd);
 	}
 	close(fd);
-	ft_printf("tt\n");
 	init(cdata, data);
-	i = 0;
-	check_data(data);
-	parse_path(data->NO, 2);
-	parse_path(data->SO, 2);
-	parse_path(data->EA, 2);
-	parse_path(data->WE, 2);
-	while (data->map[i] != NULL)
-	{
-		ft_printf("%s\n", data->map[i]);
-		i++;
-	}
-	ft_printf("OK\n");
+	utils_data(data);
 	free (cdata);
 }

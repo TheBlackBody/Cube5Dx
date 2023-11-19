@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/18 04:00:32 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/19 14:50:26 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,10 @@ void    ft_close(void);
 void	ft_game(t_mlx *mlx, t_data *data);
 void    parse_path(char *path, int time);
 void	init_data(char *path, t_data *data);
-void    init_NO(char *line, t_data *data);
-void    init_SO(char *line, t_data *data);
-void    init_WE(char *line, t_data *data);
-void    init_EA(char *line, t_data *data);
+void    init_no(char *line, t_data *data);
+void    init_so(char *line, t_data *data);
+void    init_we(char *line, t_data *data);
+void    init_ea(char *line, t_data *data);
 void	ft_ignit_sprite(t_data *data, t_mlx *mlx);
 void	ft_pixel_put(t_mlx *mlx, int x, int y, int color);
 void	move_front(int keycode, t_mlx *mlx);
@@ -159,5 +159,16 @@ int	mcolor(int t, int r, int g, int b);
 //int    get_pixel_color(t_image *text, int x, int y); //a sup pt
 int     lenx(char **map, int y);
 t_image	*ft_select_text(t_pose *var, t_data *data);
+void	flood_fill(char **map, int x, int y);
+void	flood_fill2(char **map, int x, int y);
+int		leny(char **map);
+int		lenx(char **map, int y);
+void	check_char(char **map, int x, int y);
+void	free_map(char **map);
+void	utils_data(t_data *data);
+void	check_data(t_data *data);
+int		check_num(char	*n);
+void	check_data_utils(char **f, char **c, int n_f, int n_c);
+void	check_map(t_data *data);
 
 #endif
