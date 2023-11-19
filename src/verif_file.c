@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:47:46 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/19 15:39:40 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/19 15:43:40 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**dup_map(char **map)
 void	flood_fill(char **map, int x, int y)
 {
 	if (y - 1 < -1 || (y + 1 == leny(map) && map[y][x] != '1')
-		|| (x - 1 == leny(map) && map[y][x] != '1') || map[y][x] == ' ')
+		|| (x - 1 == lenx(map, y) && map[y][x] != '1') || map[y][x] == ' ')
 	{
 		ft_printf("Error : The map should be closed\n");
 		ft_close();
