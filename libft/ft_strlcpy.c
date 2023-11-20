@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sfernand <sfernand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:59:32 by sfernand          #+#    #+#             */
-/*   Updated: 2023/04/10 16:04:46 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:05:44 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<string.h>
+#include <string.h>
 
 size_t	ft_lensrc(const char *r_src)
 {

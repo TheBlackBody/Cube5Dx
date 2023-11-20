@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/19 14:41:02 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:03:48 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	ft_close(void)
 
 void	ft_ignit_sprite(t_data *data, t_mlx *mlx)
 {
-	data->north.referenc = mlx_xpm_file_to_image(mlx->mlx, data->NO,
+	data->north.referenc = mlx_xpm_file_to_image(mlx->mlx, data->no,
 			&data->north.size.s_x, &data->north.size.s_y);
 	data->north.pixels = mlx_get_data_addr(data->north.referenc,
 			&data->north.bits_per_pixel,
 			&data->north.line_size, &data->north.endian);
-	data->south.referenc = mlx_xpm_file_to_image(mlx->mlx, data->SO,
+	data->south.referenc = mlx_xpm_file_to_image(mlx->mlx, data->so,
 			&data->south.size.s_x, &data->south.size.s_y);
 	data->south.pixels = mlx_get_data_addr(data->south.referenc,
 			&data->south.bits_per_pixel, &data->south.line_size,
 			&data->south.endian);
-	data->west.referenc = mlx_xpm_file_to_image(mlx->mlx, data->WE,
+	data->west.referenc = mlx_xpm_file_to_image(mlx->mlx, data->we,
 			&data->west.size.s_x, &data->west.size.s_y);
 	data->west.pixels = mlx_get_data_addr(data->west.referenc,
 			&data->west.bits_per_pixel, &data->west.line_size,
 			&data->west.endian);
-	data->east.referenc = mlx_xpm_file_to_image(mlx->mlx, data->EA,
+	data->east.referenc = mlx_xpm_file_to_image(mlx->mlx, data->ea,
 			&data->east.size.s_x, &data->east.size.s_y);
 	data->east.pixels = mlx_get_data_addr(data->east.referenc,
 			&data->east.bits_per_pixel, &data->east.line_size,
@@ -45,8 +45,8 @@ void	ft_ignit_sprite(t_data *data, t_mlx *mlx)
 
 static void	ft_ignit_fc(t_pose *var, t_data *data)
 {
-	var->f = ft_split(data->F, ',');
-	var->c = ft_split(data->C, ',');
+	var->f = ft_split(data->f, ',');
+	var->c = ft_split(data->c, ',');
 }
 
 static void	def_everything(t_mlx *mlx, t_data *data)
@@ -87,12 +87,13 @@ int	main(int argc, char **argv)
 		init_data(argv[1], &data);
 		verif_map(&data);
 		check_map(&data);
+		system("leaks cube");
 		def_everything(&mlx, &data);
 		ft_game(&mlx, &data);
 	}
-	else if (argc > 2) 
+	else if (argc > 2)
 		ft_printf("Error : to many argument\n");
-	else if (argc < 2) 
+	else if (argc < 2)
 		ft_printf("Error : to less argument\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/19 13:50:29 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:53:38 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	check_data(t_data *data)
 	int		n_f;
 	int		n_c;
 
-	f = ft_split(data->F, ',');
-	c = ft_split(data->C, ',');
+	f = ft_split(data->f, ',');
+	c = ft_split(data->c, ',');
 	n_f = -1;
 	n_c = -1;
 	while (f[++n_f])

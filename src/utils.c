@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:13:44 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/18 14:23:57 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:54:30 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ static int	ft_big_free(char **str)
 
 static void	ft_free_data(t_data *data, t_mlx *mlx)
 {
-	free(data->NO);
-	free(data->SO);
-	free(data->WE);
-	free(data->EA);
-	free(data->F);
-	free(data->C);
+	free(data->no);
+	free(data->so);
+	free(data->we);
+	free(data->ea);
+	free(data->f);
+	free(data->c);
 	mlx_destroy_image(mlx->mlx, data->north.referenc);
 	mlx_destroy_image(mlx->mlx, data->south.referenc);
 	mlx_destroy_image(mlx->mlx, data->west.referenc);
