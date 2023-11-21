@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 14:11:17 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:07:39 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		parse_path(argv[1], 1);
+		parce_file(argv[1]);
 		init_data(argv[1], &data);
 		verif_map(&data);
 		check_map(&data);
