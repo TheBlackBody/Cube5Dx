@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 16:32:56 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:39:30 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	veriffile(char *path, int time)
 	}
 	close(fd);
 	fd = open(path, O_RDONLY);
-	if (fd != 3)
+	if (fd == -1)
 	{
-		ft_printf("Error: your %s doesn't exist\n", type);
+		ft_printf("Error: your %s doesn't exist : '%s'\n", type, path);
 		close(fd);
 		ft_close();
 	}
