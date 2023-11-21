@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 11:57:51 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:32:56 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	verifname(char *path, int i, int n, char *extention)
 			ft_close();
 		}
 		n++;
+	}
+	if (path[i] != extention[n])
+	{
+		ft_printf("Error: your map or your texture name does have");
+		ft_printf(" extention <.cube> or <.xpm> if is texture\n");
+		ft_close();
 	}
 }
 
