@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 22:50:49 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:53:43 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_num(char	*n)
 
 	i = 0;
 	if (n == NULL)
-		return(-1);
+		return (-1);
 	while (n[i])
 	{
 		if (n[i] < 48 || n[i] > 57)
@@ -64,7 +64,7 @@ void	initvalue(char **cdata, t_data *data, int i, int j)
 	init_we(cdata[i], data);
 	init_ea(cdata[i], data);
 	if (j >= 5 && ((data->c[0] < 48 || data->c[0] > 57)
-		|| (data->f[0] < 48 || data->f[0] > 57)))
+			|| (data->f[0] < 48 || data->f[0] > 57)))
 	{
 		ft_printf("Error : data lost\n");
 		ft_close();
