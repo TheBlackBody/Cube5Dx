@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 18:51:53 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:36:03 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	check_data(t_data *data)
 
 void	initvalue(char **cdata, t_data *data, int i)
 {
+	ft_printf("%s\n", cdata[i]);
 	init_no(cdata[i], data);
 	init_so(cdata[i], data);
 	init_we(cdata[i], data);
@@ -67,22 +68,25 @@ void	init(char **cdata, t_data *data)
 {
 	int		i;
 	int		n;
+	int		j;
 
 	i = 0;
 	n = ft_strllen(cdata[i]);
 	data->map = (char **)malloc(sizeof (char *) * (n * 100));
 	n = 0;
+	j = 0;
 	while (cdata[i])
 	{
-		if (i < 7)
-		{
+		ft_printf("%s\n", cdata[i]);
+		if (j < 6)
 			initvalue(cdata, data, i);
-		}
-		else if (i >= 7 && (cdata[i][0] != '\n' && cdata[i]))
+		else if (j >= 6 && (cdata[i][0] != '\n' && cdata[i]))
 		{
 			data->map[n] = ft_strdup(cdata[i]);
 			n++;
 		}
+		if (cdata[i][0] != '\n')
+			j++;
 		free(cdata[i]);
 		i++;
 	}
@@ -104,7 +108,7 @@ void	init_data(char *path, t_data *data)
 	i = ft_strllen(line);
 	close(fd);
 	free(line);
-	cdata = (char **)malloc(sizeof (char *) * (i * 1000));
+	cdata = (char **)malloc(sizeof (char *) * (i * 100));
 	fd = open(path, O_RDONLY);
 	i = 0;
 	cdata[i] = get_next_line(fd);
