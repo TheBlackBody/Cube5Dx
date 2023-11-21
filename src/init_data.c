@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 18:04:53 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:51:53 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	init_data(char *path, t_data *data)
 	i = ft_strllen(line);
 	close(fd);
 	free(line);
-	cdata = (char **)malloc(sizeof (char *) * (i * 100));
+	cdata = (char **)malloc(sizeof (char *) * (i * 1000));
 	fd = open(path, O_RDONLY);
 	i = 0;
 	cdata[i] = get_next_line(fd);
