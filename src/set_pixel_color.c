@@ -6,7 +6,7 @@
 /*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 02:45:36 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/18 14:21:54 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:34:30 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static unsigned int	text_color(t_image *w_text, t_pose *var, int tex_x)
 {
 	int	tex_y;
 
-	tex_y = (int)var->tex_pos & (var->text_height - 1);
+	tex_y = (int)var->tex_pos & (w_text->size.s_y - 1);
 	var->tex_pos += var->step;
 	return (get_pixel_color(w_text, tex_x, tex_y));
 }
@@ -47,7 +47,7 @@ static int	set_var_text(t_image *w_text, t_pose *var, t_mlx *mlx)
 	tex_x = (int)(wall_x * (double)w_text->size.s_x);
 	if (var->w_side == 0 && var->ray_dir_x > 0)
 		tex_x = w_text->size.s_x - tex_x - 1;
-	if (var->w_side == 1 && var->ray_dir_x < 0)
+	if (var->w_side == 1 && var->ray_dir_y < 0)
 		tex_x = w_text->size.s_x - tex_x - 1;
 	var->step = 1.0 * w_text->size.s_y / var->line_height;
 	var->tex_pos = (var->draw_start - mlx->size.s_y / 2

@@ -6,7 +6,7 @@
 /*   By: gpolve-g <gpolve-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:11:44 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/18 02:19:32 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/19 16:38:09 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	key_hook(int keycode, t_mlx *mlx)
 		move_left(keycode, mlx);
 	else if (keycode == 13 || keycode == 1)
 		move_front(keycode, mlx);
-	else if (keycode == 123)
-		rotat_left(mlx);
 	else if (keycode == 124)
+		rotat_left(mlx);
+	else if (keycode == 123)
 		rotat_right(mlx);
 	return (0);
 }
