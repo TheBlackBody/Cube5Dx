@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 16:36:06 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:39:51 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	init_data(char *path, t_data *data)
 
 	fd = open(path, O_RDONLY);
 	line = get_next_line(fd);
-	while (line[0] == '\n')
+	while (line[0] == '\n' && line)
 		line = get_next_line(fd);
 	if (line == NULL)
 		ft_close_void();
