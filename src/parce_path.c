@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 18:39:30 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 23:27:31 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ void	verifname(char *path, int i, int n, char *extention)
 	}
 }
 
+void	ft_error(void)
+{
+	ft_printf("Error: your map name does have <.> ");
+	ft_printf("+ extention <cube> or <xpm> if is texture\n");
+	ft_close();
+}
+
 void	parse_path(char *path, int time)
 {
 	int		i;
@@ -71,14 +78,12 @@ void	parse_path(char *path, int time)
 		extention = "cube";
 	else if (time > 1)
 		extention = "xpm";
+	if (path == NULL)
+			ft_error();
 	while (path[i + 1] != '.')
 	{
 		if (path[i] == '\0')
-		{
-			ft_printf("Error: your map name does have <.> ");
-			ft_printf("+ extention <cube> or <xpm> if is texture\n");
-			ft_close();
-		}
+			ft_error();
 		i++;
 	}
 	i++;
