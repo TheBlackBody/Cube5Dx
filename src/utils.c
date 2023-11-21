@@ -6,11 +6,17 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:13:44 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/20 16:54:30 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:11:49 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
+
+void	ft_close_void(void)
+{
+	ft_printf("Error: your map is empty\n");
+	exit(0);
+}
 
 double	ft_abs(double val)
 {

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 12:44:46 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:11:17 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	main(int argc, char **argv)
 		init_data(argv[1], &data);
 		verif_map(&data);
 		check_map(&data);
-		system("leaks cube");
 		def_everything(&mlx, &data);
 		ft_game(&mlx, &data);
 	}

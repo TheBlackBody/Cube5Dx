@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/20 16:53:38 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:10:04 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	init_data(char *path, t_data *data)
 
 	fd = open(path, O_RDONLY);
 	line = get_next_line(fd);
+	if (line == NULL)
+		ft_close_void();
 	while (line[0] == '\n' && line)
 		line = get_next_line(fd);
 	i = ft_strllen(line);
@@ -108,11 +110,8 @@ void	init_data(char *path, t_data *data)
 	fd = open(path, O_RDONLY);
 	i = 0;
 	cdata[i] = get_next_line(fd);
-	while (cdata[i])
-	{
-		i++;
+	while (cdata[++i])
 		cdata[i] = get_next_line(fd);
-	}
 	close(fd);
 	init(cdata, data);
 	utils_data(data);
