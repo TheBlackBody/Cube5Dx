@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 21:32:43 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/21 22:39:17 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_num(char	*n)
 	int	i;
 
 	i = 0;
+	if (n == NULL)
+		return(-1);
 	while (n[i])
 	{
 		if (n[i] < 48 || n[i] > 57)
@@ -55,12 +57,18 @@ void	check_data(t_data *data)
 	free(c);
 }
 
-void	initvalue(char **cdata, t_data *data, int i)
+void	initvalue(char **cdata, t_data *data, int i, int j)
 {
 	init_no(cdata[i], data);
 	init_so(cdata[i], data);
 	init_we(cdata[i], data);
 	init_ea(cdata[i], data);
+	if (j >= 5 && ((data->c[1] < 48 || data->c[1] > 57)
+		|| (data->f[1] < 48 || data->f[1] > 57)))
+	{
+		ft_printf("Error : data lost\n");
+		ft_close();
+	}
 }
 
 void	init(char **cdata, t_data *data)
@@ -77,7 +85,7 @@ void	init(char **cdata, t_data *data)
 	while (cdata[i])
 	{
 		if (j < 6)
-			initvalue(cdata, data, i);
+			initvalue(cdata, data, i, j);
 		else if (j >= 6 && (cdata[i][0] != '\n' && cdata[i]))
 		{
 			data->map[n] = ft_strdup(cdata[i]);
