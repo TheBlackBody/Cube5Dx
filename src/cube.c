@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 22:20:46 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:54:44 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ int	main(int argc, char **argv)
 	t_data	data;
 	t_mlx	mlx;
 
+	data.no = ft_calloc(1, 1);
+	data.so = ft_calloc(1, 1);
+	data.ea = ft_calloc(1, 1);
+	data.we = ft_calloc(1, 1);
+	data.c = ft_calloc(1 ,1);
+	data.f = ft_calloc(1, 1);
 	if (argc == 2)
 	{
 		parse_path(argv[1], 1);

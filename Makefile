@@ -6,14 +6,14 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/11/21 18:09:06 by sfernand         ###   ########.fr        #
+#    Updated: 2023/11/21 23:32:47 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cube
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
