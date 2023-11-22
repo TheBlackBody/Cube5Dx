@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 23:27:31 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:00:00 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	parse_path(char *path, int time)
 	else if (time > 1)
 		extention = "xpm";
 	if (path == NULL)
-			ft_error();
+		ft_error();
 	while (path[i + 1] != '.')
 	{
 		if (path[i] == '\0')

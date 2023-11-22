@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/22 14:54:44 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:00:14 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	data.so = ft_calloc(1, 1);
 	data.ea = ft_calloc(1, 1);
 	data.we = ft_calloc(1, 1);
-	data.c = ft_calloc(1 ,1);
+	data.c = ft_calloc(1, 1);
 	data.f = ft_calloc(1, 1);
 	if (argc == 2)
 	{
