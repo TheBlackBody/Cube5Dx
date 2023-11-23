@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:07:53 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 19:24:31 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:56:54 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	parce_file(char *path)
 	line = get_next_line(fd);
 	if (line == NULL)
 		ft_close_void();
-	while (line[0] == '\n' && line)
+	while (line && line[0] == '\n')
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
@@ -40,7 +40,7 @@ void	parce_file(char *path)
 	}
 	while (line != NULL)
 	{
-		while (line[0] == '\n' && line)
+		while (line && line[0] == '\n')
 			line = get_next_line(fd);
 		i++;
 		line = get_next_line(fd);
