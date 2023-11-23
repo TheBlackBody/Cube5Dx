@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:07:53 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 11:56:54 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:07:36 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	parce_file(char *path)
 		line = get_next_line(fd);
 	}
 	check_i(i);
+	free(line);
 }
