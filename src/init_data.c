@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/22 14:57:28 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:32:58 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	init(char **cdata, t_data *data)
 	int		j;
 
 	i = 0;
-	n = ft_strllen(cdata[i]);
-	data->map = (char **)malloc(sizeof (char *) * (n * 100));
+	data->map = (char **)malloc(sizeof (char *) * (10 * 100));
+	check_malloc_error(data->map);
 	n = 0;
 	j = 0;
 	while (cdata[i])

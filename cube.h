@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/21 18:20:02 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:32:04 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,5 +156,6 @@ void		check_data_utils(char **f, char **c, int n_f, int n_c);
 void		check_map(t_data *data);
 void		ft_close_void(void);
 void		parce_file(char *path);
+void		check_malloc_error(char **map);
 
 #endif

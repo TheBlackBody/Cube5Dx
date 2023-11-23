@@ -1,9 +1,10 @@
+
 WE ./asset/pics/wood.xpm
 NO ./asset/pics/redbrick.xpm
 SO ./asset/pics/mossy.xpm
 EA ./asset/pics/eagle.xpm
 
-
+F 124,55,0
 C 0,0,155
 100000000000000000000000000000000000001
 100000000000000000000000000000000000001

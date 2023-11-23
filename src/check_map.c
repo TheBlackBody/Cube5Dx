@@ -6,17 +6,26 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:41:33 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/19 14:57:00 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:31:56 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
+void	check_malloc_error(char **map)
+{
+	if (!map)
+	{
+		ft_printf("Malloc error\n");
+		ft_close();
+	}
+}
+
 void	check_a(int a)
 {
 	if (a > 1)
 	{
-		ft_printf("Error : map shold containt only one N E W S");
+		ft_printf("Error : map shold containt only one N E W S\n");
 		ft_close();
 	}
 }
