@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:39:54 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:33:05 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:14:26 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	veriffile(char *path, int time)
 
 void	verifname(char *path, int i, int n, char *extention)
 {
-	while (path[i++] != '\0' && n < ((int)ft_strllen(extention) - 1))
+	while (path[i++] != '\0' && n < ((int)ft_strllen(extention)))
 	{
 		if (path[i] != extention[n])
 		{
 			ft_printf("Error: your map or your texture name does have");
-			ft_printf(" extention <.cube> or <.xpm> if is texture\n");
+			ft_printf(" extention <.cub> or <.xpm> if is texture\n");
 			ft_close();
 		}
 		n++;
@@ -54,7 +54,7 @@ void	verifname(char *path, int i, int n, char *extention)
 	if (path[i] != extention[n])
 	{
 		ft_printf("Error: your map or your texture name does have");
-		ft_printf(" extention <.cube> or <.xpm> if is texture\n");
+		ft_printf(" extention <.cub> or <.xpm> if is texture\n");
 		ft_close();
 	}
 }
@@ -62,7 +62,7 @@ void	verifname(char *path, int i, int n, char *extention)
 void	ft_error(void)
 {
 	ft_printf("Error: your map name does have <.> ");
-	ft_printf("+ extention <cube> or <xpm> if is texture\n");
+	ft_printf("+ extention <cub> or <xpm> if is texture\n");
 	ft_close();
 }
 
@@ -75,7 +75,7 @@ void	parse_path(char *path, int time)
 	i = 0;
 	n = 0;
 	if (time == 1)
-		extention = "cube";
+		extention = "cub";
 	else if (time > 1)
 		extention = "xpm";
 	if (path == NULL)

@@ -6,11 +6,11 @@
 #    By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 19:15:17 by sfernand          #+#    #+#              #
-#    Updated: 2023/11/23 17:31:21 by sfernand         ###   ########.fr        #
+#    Updated: 2023/11/24 13:14:52 by sfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cube
+NAME = cub3D
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
