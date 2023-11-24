@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:32:16 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:04:33 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,30 @@ void	ft_ignit_sprite(t_data *data, t_mlx *mlx)
 
 static void	ft_ignit_fc(t_pose *var, t_data *data)
 {
+	char	chara;
+
 	var->f = ft_split(data->f, ',');
 	var->c = ft_split(data->c, ',');
+	chara = data->map[(int)var->y][(int)var->x];
+	if (chara == 'S')
+	{
+		var->dir_x = 0;
+		var->dir_y = 1;
+		var->plane_x = 0.66;
+		var->plane_y = 0;	
+	}
+	else if (chara == 'N')
+	{
+		var->dir_x = 0;
+		var->dir_y = -1;
+		var->plane_x = -0.66;
+		var->plane_y = 0;	
+	}
+	else if (chara == 'E')
+	{
+		var->dir_x = 1;
+		var->plane_y = -0.66;	
+	}
 }
 
 static void	def_everything(t_mlx *mlx, t_data *data)

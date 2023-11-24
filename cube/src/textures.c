@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:09:22 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/23 17:33:30 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:54:04 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ t_image	*ft_select_text(t_pose *var, t_data *data)
 	if (var->w_side == 0)
 	{
 		if (var->map_x > (int)var->x)
-			return (&data->south);
+			return (&data->west);
 		else
-			return (&data->north);
+			return (&data->east);
 	}
 	else
 	{
 		if (var->map_y > (int)var->y)
-			return (&data->west);
+			return (&data->north);
 		else
-			return (&data->east);
+			return (&data->south);
 	}
 }
