@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/24 14:04:33 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:11:37 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_close(void)
 {
+	system("leaks cub3D");
 	exit(0);
 }
 
@@ -111,7 +112,7 @@ int	main(int argc, char **argv)
 	{
 		parse_path(argv[1], 1);
 		parce_file(argv[1]);
-		init_data(argv[1], &data);
+		init_data(argv[1], &data, 0, 0);
 		verif_map(&data);
 		check_map(&data);
 		def_everything(&mlx, &data);

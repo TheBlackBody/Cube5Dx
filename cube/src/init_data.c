@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:32:35 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:13:42 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,23 +100,20 @@ void	init(char **cdata, t_data *data)
 	data->map[n] = NULL;
 }
 
-void	init_data(char *path, t_data *data)
+void	init_data(char *path, t_data *data, int	i, int	n)
 {
 	char	**cdata;
 	char	*line;
 	int		fd;
-	int		i;
 
 	fd = open(path, O_RDONLY);
 	line = get_next_line(fd);
-	while (line[0] == '\n' && line)
-		line = get_next_line(fd);
-	i = ft_strllen(line);
+	line = check_new_line(line, fd);
+	n = ft_strllen(line);
 	close(fd);
 	free(line);
-	cdata = (char **)malloc(sizeof (char *) * (i * 100));
+	cdata = (char **)malloc(sizeof (char *) * (n * 100));
 	fd = open(path, O_RDONLY);
-	i = 0;
 	cdata[i] = get_next_line(fd);
 	while (cdata[i])
 	{

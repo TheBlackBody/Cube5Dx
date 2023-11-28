@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:07:53 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:32:55 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:14:25 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_i(int i)
 	}
 }
 
-void	check_new_line(char *line, int fd)
+char	*check_new_line(char *line, int fd)
 {
 	if (line && line[0] == '\n')
 	{
@@ -33,6 +33,7 @@ void	check_new_line(char *line, int fd)
 				ft_close_void();
 		}
 	}
+	return (line);
 }
 
 void	parce_file(char *path)
@@ -46,7 +47,7 @@ void	parce_file(char *path)
 	line = get_next_line(fd);
 	if (line == NULL)
 		ft_close_void();
-	check_new_line(line, fd);
+	line = check_new_line(line, fd);
 	while (line != NULL)
 	{
 		while (line && line[0] == '\n')
