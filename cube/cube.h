@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:18:20 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/29 11:49:06 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:15:41 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,6 @@ void		check_map(t_data *data);
 void		ft_close_void(void);
 void		parce_file(char *path);
 void		check_malloc_error(char **map);
+void		init_player(int x, int y, t_data *data);
 
 #endif

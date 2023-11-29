@@ -6,11 +6,17 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:41:33 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:20:06 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:24:06 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube_bonus.h"
+
+void	init_player(int x, int y, t_data *data)
+{
+	data->pose.x = x;
+	data->pose.y = y;
+}
 
 void	check_malloc_error(char **map)
 {

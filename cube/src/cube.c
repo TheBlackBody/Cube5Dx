@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/29 16:54:01 by gpolve-g         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:08:25 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int	main(int argc, char **argv)
 		parce_file(argv[1]);
 		init_data(argv[1], &data, 0, 0);
 		verif_map(&data);
+		ft_printf("cc\n");
 		check_map(&data);
 		def_everything(&mlx, &data);
 		ft_game(&mlx, &data);

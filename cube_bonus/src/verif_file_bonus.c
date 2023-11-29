@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:47:46 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/23 17:22:15 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:23:29 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,20 @@ void	verif_map(t_data *data)
 	y = 0;
 	i = ft_strlen(data->map[y]);
 	map = dup_map(data->map);
-	while (x != i && (map[y][x] != 'N' && map[y][x] != 'E'
+	while (map[y] != NULL && x != i && (map[y][x] != 'N' && map[y][x] != 'E'
 			&& map[y][x] != 'S' && map[y][x] != 'W'))
 	{
 		x++;
 		i = ft_strlen(map[y]);
-		if (x == i)
+		if (x == i && map[y + 1] != NULL)
 		{
 			x = 0;
 			y++;
 		}
 		check_char(map, x, y);
 	}
-	data->pose.x = x;
-	data->pose.y = y;
+	check_map(data);
+	init_player(x, y, data);
 	flood_fill(map, x, y);
 	free_map(map);
 }
