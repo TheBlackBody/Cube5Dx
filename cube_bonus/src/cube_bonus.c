@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/28 15:17:51 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:50:57 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ static void	ft_ignit_fc(t_pose *var, t_data *data)
 		var->dir_x = 0;
 		var->dir_y = 1;
 		var->plane_x = 0.66;
-		var->plane_y = 0;	
+		var->plane_y = 0;
 	}
 	else if (chara == 'N')
 	{
 		var->dir_x = 0;
 		var->dir_y = -1;
 		var->plane_x = -0.66;
-		var->plane_y = 0;	
+		var->plane_y = 0;
 	}
 	else if (chara == 'E')
 	{
 		var->dir_x = 1;
-		var->plane_y = -0.66;	
+		var->plane_y = -0.66;
 	}
 }
 

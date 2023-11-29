@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:23:39 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/28 15:13:42 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:48:44 by sfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	init(char **cdata, t_data *data)
 	data->map[n] = NULL;
 }
 
-void	init_data(char *path, t_data *data, int	i, int	n)
+void	init_data(char *path, t_data *data, int i, int n)
 {
 	char	**cdata;
 	char	*line;
