@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:13:44 by gpolve-g          #+#    #+#             */
-/*   Updated: 2023/11/28 14:02:07 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:47:52 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_close_void(void)
 {
 	ft_printf("Error: your map is empty\n");
-	system("leaks cube3D");
 	exit(0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sfernand <sfernand@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:17:40 by sfernand          #+#    #+#             */
-/*   Updated: 2023/11/29 11:47:57 by sfernand         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:54:01 by gpolve-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_close(void)
 {
-	system("leaks cub3D");
 	exit(0);
 }
 

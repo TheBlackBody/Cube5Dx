@@ -1,10 +1,10 @@
-NO ./asset/brick.xpm
-SO ./asset/grass.xpm
-WE ./asset/diamond.xpm
-EA ./asset/exit.xpm
+EA ./asset/pics/redbrick.xpm
+WE ./asset/pics/bluestone.xpm
+SO ./asset/pics/eagle.xpm
+NO ./asset/pics/mossy.xpm
 
 F 220,100,0
-C 225,30,0
+C 125,30,155
 
         1111111111111111111111111
         1000000000110000000000001
